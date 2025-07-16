@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/favico.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/doctor.css">
+  
+
+    <!-- Preconnect 提前建立連接 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://all-age.github.io/allage/">
+    <meta property="og:title" content="樂活全齡綜合診所官網">
+    <meta property="og:image" content="/images/logo01.jpg">
+    <meta name="description" content="樂活全齡照顧全民 | 本院位於仁德區,由家庭醫學專科、骨科專科醫師提供成人與小兒各項醫療服務,並設有X光機檢查與復健治療。
+    包含：三高與各式急慢性疾病、常見皮膚疾患、感冒喉嚨痛鼻炎、腸胃道疾病與骨科疾患。">
+    <meta name="keywords" content="樂活全齡綜合診所,台南家醫科,家醫科診所,家庭醫學,台南家庭醫學,仁德家庭醫學,仁德皮膚,全齡綜合診所,台南樂活全齡,台南仁德樂活全齡,台南仁德全齡綜合診所,台南仁德全齡綜合診所,全齡診所,樂活全齡,兒科疾病,慢性整合醫學,社區與預防醫學,仁德診所,樂活全齡照顧全民">
+    <title>首頁｜樂活全齡綜合診所｜台南仁德家醫科・復健科・長照服務｜全齡健康照顧</title>
+
+    
+      <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 避免 sticky 導覽列遮住標題，可選 */
+  #traffic {
+    scroll-margin-top: 100px;
+  }
+</style>
+  </head>
+
+  
+
+
+  <body>
+    
+     <!-- 導航欄 -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo">
+          <h1>樂活全齡綜合診所</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">關於診所</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="aboutus.html">診所簡介</a></li>
+                <li><a class="dropdown-item" href="index.html#timeinfo">門診資訊</a></li>
+                <li><a class="dropdown-item" href="index.html#doctor">醫師介紹</a></li>          
+                <li><a class="dropdown-item" href="./index.html#traffic">交通資訊</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">掛號資訊</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Treatment.html">診療項目</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="health-Edu.html">衛教宣導</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">聯絡我們</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 首頁橫幅 -->
+    <section id="home">
+      <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <picture class="banner-picture">
+              <source media="(max-width: 360px)" srcset="./images/BANNER_360.jpg"> 
+              <source media="(max-width: 576px)" srcset="./images/BANNER_576.jpg">       
+              <source media="(max-width: 768px)" srcset="./images/BANNER_768.jpg">
+              <source media="(max-width: 1024px)" srcset="./images/BANNER_1024.jpg">
+              <img src="./images/BANNER_1920.jpg" class="d-block w-100 banner-img" alt="樂活全齡診所廣告" loading="eager" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">上一張</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">下一張</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 門診時間表 -->
+    <section id="weekfrom" class="py-5 bg-light">
+      <div class="container item allageweek">
+        <h2 class="text-center mb-3 fade-in" id="weekRange" >本週門診表 <br>（7/14～7/18）</h2>
+        <p class="txttxt mb-3" >醫師排班若有異動，以 FB 最新公告為主。</p>                                                           
+        <div class="row">
+          <div class="col-md-10  mx-auto">
+            <div class="card service-card  fade-in" style="animation-delay: 0.1s;">
+              <img id="clinicSchedule" src="./images/week1.jpg" alt="門診時間表" class="week" loading="lazy">
+              <p id="weekInfo"></p>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </section>
+
+
+
+    <!-- 服務項目 -->
+    <section id="services" class="py-5 bg-light">
+      <div class="container item ">
+        <h2 class="text-center mb-5 fade-in">診療項目</h2>
+                                                                                                                                                                                                                                                                                                                                                                                      
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="card service-card h-100 fade-in" style="animation-delay: 0.1s;">
+              <div class="card-body text-center">
+                <i class="fa-solid fa-hand-dots display-4 mb-3"></i>
+                <h5 class="card-title">青春痘及皮膚疾病</h5>
+                <p class="card-text">專業皮膚診療，解決各類皮膚問題</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card service-card h-100 fade-in" style="animation-delay: 0.2s;">
+              <div class="card-body text-center">
+                <i class="bi bi-people display-4 mb-3"></i>
+                <h5 class="card-title">家庭醫學專科</h5>
+                <p class="card-text">全家人的健康守護者</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card service-card h-100 fade-in" style="animation-delay: 0.3s;">
+              <div class="card-body text-center">
+                <i class="fas fa-pills display-4 mb-3"></i>
+                <h5 class="card-title">慢性病整合醫療</h5>
+                <p class="card-text">專業的慢性病照護和用藥指導</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card service-card h-100 fade-in" style="animation-delay: 0.4s;">
+              <div class="card-body text-center">
+                <i class="bi bi-shield-check display-4 mb-3"></i>
+                <h5 class="card-title">社區與預防醫學</h5>
+                <p class="card-text">預防保健，守護社區健康</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <section id="doctor" class="py-5">
+      <div class="container doctor">
+        <h2 class="text-center mb-5 fade-in">醫師團隊</h2>                                                                                                                                            
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="card doctor-card h-100 fade-in" style="animation-delay: 0.1s;">
+              <div class="card-body">
+                <img src="./images/doctor1.jpg" alt="沈子翔 院長" class="lazy-load" 
+                loading="lazy">
+                <h5 class="card-title">沈子翔 院長</h5>
+                <p class="card-text">家庭醫學專科</p>
+                <span class="doctor-specialty">家庭醫學及兒科疾病</span>
+              </div>
+            </div>
+      
+          </div>
+          
+          <div class="col-md-3 mb-4">
+            <div class="card doctor-card h-100 fade-in" style="animation-delay: 0.3s;">
+              <div class="card-body">
+                <img src="./images/doctor4.jpg" alt="羅際衛 醫師" class="lazy-load" loading="lazy" >
+                <h5 class="card-title">羅際衛 醫師</h5>
+                <p class="card-text">骨科專科</p>
+                <span class="doctor-specialty">骨科</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card doctor-card h-100 fade-in" style="animation-delay: 0.4s;">
+              <div class="card-body">
+                <img src="./images/doctor3.jpg" alt="賴俊達 醫師" class="lazy-load" loading="lazy">
+                <h5 class="card-title">賴俊達 醫師</h5>
+                <p class="card-text">骨科專科</p>
+                <span class="doctor-specialty">骨科</span>
+              </div>
+            </div>
+          </div>
+
+      
+
+          <div class="col-md-3 mb-4">
+            <div class="card doctor-card h-100 fade-in" style="animation-delay: 0.2s;">
+              <div class="card-body">
+                <img src="./images/doctor2.jpg" alt="王世宗 醫師" class="lazy-load" loading="lazy" >
+                <h5 class="card-title">王世宗 醫師</h5>
+                <p class="card-text">骨科專科</p>
+                <span class="doctor-specialty">骨科</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 影片介紹 -->
+    <section id="video-intro" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5 fade-in">樂活全齡 關心全民</h2>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4">
+            <h3 class="hh3">專業醫療服務，照顧您全家健康</h3>
+            <p class="lead mb-4">樂活全齡綜合診所提供家庭醫學、復健科、皮膚科等多元診療服務，由專業醫師團隊為您量身打造健康照護方案。</p>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>家庭醫學專科醫師親自診療</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>便利的交通位置，備有停車空間</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>溫馨舒適的診所環境</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>多元化的醫療服務</li>
+            </ul>
+            <button class="btn btn-success" onclick="window.location.href='#contact'">立即聯絡我們</button>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="video-container">
+              <!-- 直接嵌入影片 -->
+              <div class="ratio ratio-16x9">
+                <iframe
+                width="569"
+                height="315"
+                src="https://youtube.com/embed/gCY4RzKZpcE"
+                frameborder="0"
+                allowfullscreen>
+              </iframe>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+ 
+
+</div>
+    <!-- 聯絡我們 -->
+    <section id="contact" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5 fade-in">聯絡我們</h2>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="contact-card">
+              <div class="card-header" id="timeinfo">
+                <h4><i class="bi bi-hospital me-2"></i>門診資訊</h4>
+              </div>
+              <div class="card-body">
+                <div class="contact-info mb-3">
+                  <p><i class="bi bi-geo-alt-fill text-gray me-2"></i> 地址：<strong>臺南市仁德區中正路二段1225號</strong></p>
+                  <p><i class="bi bi-telephone-fill text-gray me-2"></i> 電話：<strong>06-2791515</strong></p>
+                  <p><i class="bi bi-clock-fill text-gray me-2"></i> 營業時間：</p>
+                </div>
+                <div class="schedule-container mt-3 mb-4">
+                  <img src="images/list.jpg" alt="診所營業時間表" class="img-fluid rounded schedule-image" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="contact-card" id="traffic" >
+              <div class="card-header">
+                <h4><i class="bi bi-pin-map-fill me-2"></i>交通方式</h4>
+              </div>
+              <div class="card-body">
+                <div class="transportation-info mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <div class="transportation-icon">
+                      <i class="bi bi-car-front-fill text-primary"></i>
+                    </div>
+                    <div class="transportation-text">
+                      <h5 class="mb-0">自行開車</h5>
+                      <p class="mb-0">便利的交通位置，備有停車空間</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="transportation-icon">
+                      <i class="bi bi-bus-front-fill text-primary"></i>
+                    </div>
+                    <div class="transportation-text">
+                      <h5 class="mb-0">大眾運輸</h5>
+                      <p class="mb-0">鄰近公車站牌，交通便利</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="schedule-container">
+                  <img src="images/map.jpg" alt="診所位置" class="img-fluid rounded schedule-image" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <a href="contact.html" class="btn btn-primary btn-lg">前往聯絡我們頁面</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row">
+          <!-- Logo區域 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="footer-logo-container" >
+              <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo" class="footer-logo">
+              <h5 class="text-white mt-3">●樂活全齡綜合診所●</h5>
+              <p class="text-light small mt-2">專業醫療服務，照顧您全家健康</p>
+            </div>
+          </div>
+          
+          <!-- 網站導覽 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">網站導覽</h5>
+            <ul class="list-unstyled footer-nav">
+              <li class="mb-2"><a href="index.html"><i class="fa-solid fa-house me-2"></i>首頁</a></li>
+              <li class="mb-2"><a href="aboutus.html"><i class="bi bi-info-circle me-2"></i>關於全齡</a></li>
+              <li class="mb-2"><a href="Treatment.html"><i class="fa-solid fa-list me-2"></i>診療項目</a></li>
+              <li class="mb-2"><a href="health-Edu.html"><i class="bi bi-play-circle me-2"></i>衛教宣導</a></li>
+              <li class="mb-2"><a href="contact.html"><i class="fa-solid fa-envelope me-2"></i>聯絡我們</a></li>
+            </ul>
+          </div>
+          
+          <!-- 聯絡資訊 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">聯絡資訊</h5>
+            <ul class="list-unstyled footer-contact">
+              <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i>臺南市仁德區中正路二段1225號</li>
+              <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>06-2791515</li>
+            </ul>
+          </div>
+          
+          <!-- 社群連結 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">關注我們</h5>
+            <div class="social-icons">
+              <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="me-2"><i class="bi bi-line"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="footer-divider my-4">
+        
+        <!-- 版權聲明 -->
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="mb-1 small">禁止任何網際網路服務業者轉錄其網路資訊之內容供人點閱。(但以網路搜尋或超連結方式，進入醫療機構之網址(域)直接點閱者，不在此限)</p>
+            <p class="mb-0 small">© 2025 樂活全齡綜合診所 All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 添加頁尾信息 -->
+    <div class="to-top-container">
+      <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+    </div>
+
+
+
+  <script>
+
+      // 計算本週的區間（週一 ~ 週五）
+  const current = new Date();
+  const dayOfWeekToday = current.getDay(); // 星期幾（0=日, 1=一...）
+  const monday = new Date(current);
+  const friday = new Date(current);
+
+  // 設定週一日期
+  monday.setDate(current.getDate() - ((dayOfWeekToday + 6) % 7));
+  // 設定週五日期
+  friday.setDate(monday.getDate() + 4);
+
+  // 顯示格式：MM/DD
+  const formatDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`;
+
+  // 插入至 HTML
+  const weekRangeText = `${formatDate(monday)} ～ ${formatDate(friday)}`;
+  const weekRangeEl = document.getElementById("weekRange");
+  if (weekRangeEl) weekRangeEl.innerText = weekRangeText;
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0-11
+  const firstDayOfMonth = new Date(year, month, 1);
+  const dayOfWeek = firstDayOfMonth.getDay(); // 本月第一天是星期幾
+  const day = today.getDate(); // 今天幾號
+
+  // 計算本月第幾週
+  const weekOfMonth = Math.ceil((day + dayOfWeek) / 7);
+
+  // 最多只顯示到 week5.jpg，避免溢位
+  const totalWeeks = 5;
+  const displayWeek = Math.min(weekOfMonth, totalWeeks);
+
+  // 設定圖片路徑（注意資料夾名稱為 images 而不是 image）
+  const imgPath = `./images/week${displayWeek}.jpg`;
+
+  // 插入圖片
+  const imgEl = document.getElementById("clinicSchedule");
+  if (imgEl) imgEl.src = imgPath;
+
+  // 顯示本月第幾週（除錯用）
+  // const infoEl = document.getElementById("weekInfo");
+  // if (infoEl) infoEl.innerText = `目前為 ${month + 1} 月第 ${weekOfMonth} 週`;
+  // ，顯示圖檔：week${displayWeek}.jpg
+</script>
+
+ <!-- JS -->
+  <script src="./js/traffic.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+    
+
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2E8LX8RWQ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X2E8LX8RWQ');
+  </script>
+
+
+  </body>
+</html>

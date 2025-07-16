@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/favico.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/doctor.css">
+
+
+
+    <!-- Preconnect 提前建立連接 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <meta property="og:title" content="樂活全齡綜合診所官網">
+    <meta property="og:image" content="/images/logo01.jpg">
+    <meta name="description" content="樂活全齡照顧全民 | 本院位於仁德區,由家庭醫學專科、骨科專科醫師提供成人與小兒各項醫療服務,並設有X光機檢查與復健治療。
+    包含：三高與各式急慢性疾病、常見皮膚疾患、感冒喉嚨痛鼻炎、腸胃道疾病與骨科疾患。">
+    <meta name="keywords" content="樂活全齡綜合診所,台南家醫科,家醫科診所,家庭醫學,台南家庭醫學,仁德家庭醫學,仁德皮膚,全齡綜合診所,台南樂活全齡,台南仁德樂活全齡,台南仁德全齡綜合診所,台南仁德全齡綜合診所,全齡診所,樂活全齡,兒科疾病,慢性整合醫學,社區與預防醫學,仁德診所,樂活全齡照顧全民">
+    <title> 聯絡我們 | 樂活全齡綜合診所 | 樂活全齡 照顧全民</title>
+  </head>
+
+
+
+    <!-- 聯繫表單縮小樣式 -->
+    <style>
+      /* 只針對頂部的聯繫表單 */
+      form#contactForm {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      /* 確保整個區塊縮小 */
+      .row.mt-4 {
+        display: flex;
+        justify-content: center;
+      }
+
+      .row.mt-4 .col-12 {
+        max-width: 68%;
+      }
+
+      .row.mt-4 .contact-card .card-header {
+        padding: 1rem;
+      }
+
+      .row.mt-4 .contact-card .card-body {
+        padding: 1.5rem;
+      }
+
+      .row.mt-4 .contact-card .form-control {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .row.mt-4 .contact-card .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .row.mt-4 .contact-card .lead {
+        font-size: 1rem;
+      }
+
+      .row.mt-4 .contact-card textarea.form-control {
+        min-height: 100px;
+      }
+
+      .row.mt-4 .contact-card .btn {
+        padding: 0.5rem 2rem;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .row.mt-4 .col-12 {
+          max-width: 90%;
+        }
+        form#contactForm {
+          max-width: 100%;
+        }
+      }
+
+      /* 明確指定 #contact 區塊的卡片保持原樣 */
+      #contact .contact-card {
+        max-width: 100% !important;
+      }
+
+      @media (min-width: 393px) and (max-width: 430px) {
+        .carousel-item,
+        .carousel-item img,
+        .carousel-inner,
+        .carousel {
+          height: 320px !important;
+          max-height: 320px !important;
+          min-height: 320px !important;
+        }
+        .carousel-item img {
+          object-fit: cover !important;
+          object-position: center top !important;
+          width: 100%;
+        }
+      }
+
+/* iOS 設備特定樣式修正 */
+
+      /* 針對 iOS 設備的修正 */
+      @supports (-webkit-touch-callout: none) {
+        .carousel-item {
+          height: 500px !important;
+          overflow: visible !important;
+        }
+        
+        .carousel-item img {
+          height: 100% !important;
+          object-fit: cover;
+          object-position: center top !important; /* 顯示圖片頂部 */
+          width: 100%;
+          transform: none !important;
+          max-width: 100%;
+        }
+
+        /* 修正 iOS Safari 上的輪播固定高度問題 */
+        picture {
+          display: block;
+          height: 100%;
+        }
+        
+        /* 確保輪播容器不會被截斷 */
+        .carousel {
+          max-height: 500px;
+          overflow: visible;
+        }
+      }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 避免 sticky 導覽列遮住標題，可選 */
+  #traffic {
+    scroll-margin-top: 100px;
+  }
+
+ </style>
+
+<body>
+     <!-- 導航欄 -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo">
+          <h1>樂活全齡綜合診所</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">關於診所</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="aboutus.html">診所簡介</a></li>
+                <li><a class="dropdown-item" href="index.html#timeinfo">門診資訊</a></li>
+                <li><a class="dropdown-item" href="index.html#doctor">醫師介紹</a></li>          
+                <li><a class="dropdown-item" href="./index.html#traffic">交通資訊</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">掛號資訊</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Treatment.html">診療項目</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="health-Edu.html">衛教宣導</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">聯絡我們</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  
+        
+        <!-- 聯繫表單 -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="contact-card">
+              <div class="card-header">
+                <h4><i class="bi bi-envelope-fill me-2"></i>聯繫我們</h4>
+              </div>
+              <div class="card-body">
+                <p class="lead mb-4">如有任何問題或預約需求，歡迎填寫下方表單，將使用您的郵件客戶端發送訊息給我們，我們將盡快回覆您。</p>
+                <form id="contactForm" class="contact-form" action="https://formspree.io/f/xldlrlln" method="POST">
+                  <div class="row">
+                    <div class="col-md-4 mb-3 ">
+                      <label for="name" class="form-label">姓名 <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                  
+                    <div class="col-md-8 mb-3 ">
+                      <label for="phone" class="form-label">電話 <span class="text-danger">*</span></label>
+                      <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">電子郵件 <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="subject" class="form-label">主旨</label>
+                    <input type="text" class="form-control" id="subject" name="subject">
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">訊息內容 <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="privacy" required>
+                    <label class="form-check-label" for="privacy">我同意隱私權政策並同意診所處理我的個人資料 <span class="text-danger">*</span></label>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5">送出訊息</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+      <!-- 診所及交通資訊 -->
+     <section id="contact" class="py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="contact-card">
+                <div class="card-header">
+                  <h4><i class="bi bi-hospital me-2"></i>診所資訊</h4>
+                </div>
+                <div class="card-body">
+                  <div class="contact-info mb-3">
+                    <p><i class="bi bi-geo-alt-fill text-gray me-2"></i> 地址：<strong>臺南市仁德區中正路二段1225號</strong></p>
+                    <p><i class="bi bi-telephone-fill text-gray me-2"></i> 電話：<strong>06-2791515</strong></p>
+                    <p><i class="bi bi-clock-fill text-gray me-2"></i> 營業時間：</p>
+                  </div>
+                  <div class="schedule-container mt-3 mb-4">
+                    <img src="images/list.jpg" alt="診所營業時間表" class="img-fluid rounded schedule-image" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="contact-card">
+                <div class="card-header">
+                  <h4><i class="bi bi-pin-map-fill me-2"></i>交通方式</h4>
+                </div>
+                <div class="card-body">
+                  <div class="transportation-info mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                      <div class="transportation-icon">
+                        <i class="bi bi-car-front-fill text-primary"></i>
+                      </div>
+                      <div class="transportation-text">
+                        <h5 class="mb-0">自行開車</h5>
+                        <p class="mb-0">便利的交通位置，備有停車空間</p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="transportation-icon">
+                        <i class="bi bi-bus-front-fill text-primary"></i>
+                      </div>
+                      <div class="transportation-text">
+                        <h5 class="mb-0">大眾運輸</h5>
+                        <p class="mb-0">鄰近公車站牌，交通便利</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="schedule-container">
+                    <img src="images/map.jpg" alt="診所位置" class="img-fluid rounded schedule-image" loading="lazy">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+   <!-- 頁尾 > -->
+ <footer class="footer py-4">
+  <div class="container">
+    <div class="row">
+      <!-- Logo區域 -->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <div class="footer-logo-container">
+          <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo" class="footer-logo">
+          <h5 class="text-white mt-3">樂活全齡綜合診所</h5>
+          <p class="text-light small mt-2">專業醫療服務，照顧您全家健康</p>
+        </div>
+      </div>
+      
+  <!-- 網站導覽 -->
+  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+    <h5 class="text-white mb-3">網站導覽</h5>
+    <ul class="list-unstyled footer-nav">
+      <li class="mb-2"><a href="index.html"><i class="fa-solid fa-house me-2"></i>首頁</a></li>
+      <li class="mb-2"><a href="aboutus.html"><i class="bi bi-info-circle me-2"></i>關於全齡</a></li>
+      <li class="mb-2"><a href="Treatment.html"><i class="fa-solid fa-list me-2"></i>診療項目</a></li>
+      <li class="mb-2"><a href="health-Edu.html"><i class="bi bi-play-circle me-2"></i>衛教宣導</a></li>
+      <li class="mb-2"><a href="contact.html"><i class="fa-solid fa-envelope me-2"></i>聯絡我們</a></li>
+    </ul>
+  </div>
+  
+  <!-- 聯絡資訊 -->
+  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+    <h5 class="text-white mb-3">聯絡資訊</h5>
+    <ul class="list-unstyled footer-contact">
+      <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i>臺南市仁德區中正路二段1225號</li>
+      <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>06-2791515</li>
+    </ul>
+  </div>
+  
+  <!-- 社群連結 -->
+  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+    <h5 class="text-white mb-3">關注我們</h5>
+    <div class="social-icons">
+      <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="me-2"><i class="bi bi-line"></i></a>
+    </div>
+  </div>
+</div>
+
+<hr class="footer-divider my-4">
+
+<!-- 版權聲明 -->
+<div class="row">
+  <div class="col-12 text-center">
+    <p class="mb-1 small">禁止任何網際網路服務業者轉錄其網路資訊之內容供人點閱。(但以網路搜尋或超連結方式，進入醫療機構之網址(域)直接點閱者，不在此限)</p>
+    <p class="mb-0 small">© 2025 樂活全齡綜合診所 All rights reserved.</p>
+  </div>
+</div>
+</div>
+</footer>
+
+<!-- 添加頁尾信息 -->
+<div class="to-top-container">
+  <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+</div>
+
+ <!-- JS -->
+     <script src="./js/traffic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+    
+</body>
+</html>

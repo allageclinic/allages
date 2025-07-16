@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./image/favico.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- 環境照片畫廊樣式 -->
+    <style>
+      .gallery-container {
+        padding: 2rem 0;
+      }
+      
+      .gallery-item {
+        position: relative;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+      
+      .gallery-item img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+      
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+      
+      .gallery-item .caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 15px;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+      
+      .gallery-item:hover .caption {
+        opacity: 1;
+      }
+      
+      .section-intro {
+        max-width: 800px;
+        margin: 0 auto 3rem auto;
+        text-align: center;
+      }
+      
+      .environment-category {
+        margin-bottom: 3rem;
+      }
+      
+      .environment-category h3 {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+      }
+      
+      .environment-category h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 2px;
+      }
+      
+      /* 圖片負載效果 */
+      .lazy-load {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      
+      .lazy-load.loaded {
+        opacity: 1;
+      }
+      
+      @media (max-width: 768px) {
+        .gallery-item img {
+          height: 200px;
+        }
+      }
+    </style>
+
+    <!-- iOS 設備特定樣式修正 -->
+    <style>
+      /* 針對 iOS 設備的修正 */
+      @supports (-webkit-touch-callout: none) {
+        .carousel-item {
+          height: 500px !important;
+          overflow: visible !important;
+        }
+        
+        .carousel-item img {
+          height: 100% !important;
+          object-fit: cover;
+          object-position: center top !important; /* 顯示圖片頂部 */
+          width: 100%;
+          transform: none !important;
+          max-width: 100%;
+        }
+
+        /* 修正 iOS Safari 上的輪播固定高度問題 */
+        picture {
+          display: block;
+          height: 100%;
+        }
+        
+        /* 確保輪播容器不會被截斷 */
+        .carousel {
+          max-height: 500px;
+          overflow: visible;
+        }
+      }
+    </style>
+
+    <!-- Preconnect 提前建立連接 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <meta property="og:title" content="診所環境介紹 | 樂活全齡綜合診所">
+    <meta property="og:image" content="./image/logo01.png">
+    <meta name="description" content="歡迎參觀樂活全齡綜合診所的環境，我們提供舒適、現代化的診療環境，為您帶來優質的醫療體驗。">
+    <meta name="keywords" content="診所環境,醫療空間,候診區,診療室,復健設備,樂活全齡">
+    <title>診所環境介紹 | 樂活全齡綜合診所</title>
+    
+  </head>
+  <body>
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="./image/logo01.png" alt="樂活全齡綜合診所 Logo">
+          <span>樂活全齡綜合診所</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">關於診所</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="aboutus.html">診所簡介</a></li>
+                <li><a class="dropdown-item" href="doctor.html">醫師介紹</a></li>
+                <li><a class="dropdown-item active" href="environment.html">環境介紹</a></li>
+                <li><a class="dropdown-item" href="#">交通資訊</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">掛號資訊</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Treatment.html">診療項目</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="health-Edu.html">衛教宣導</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">聯絡我們</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 頁面標題 -->
+    <section class="page-title bg-light py-5">
+      <div class="container">
+        <h1 class="text-center">診所環境介紹</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+            <li class="breadcrumb-item">關於診所</li>
+            <li class="breadcrumb-item active" aria-current="page">環境介紹</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- 環境介紹 -->
+    <section class="gallery-section py-5">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="mb-3">舒適現代的診療環境</h2>
+          <p class="lead">樂活全齡綜合診所致力於提供溫馨舒適的診療環境，從寬敞的候診區到現代化的診療室，每一個細節都為了讓您的就醫體驗更加愉悅。歡迎透過以下照片，預先了解我們的診所環境。</p>
+        </div>
+
+        <!-- 外觀環境 -->
+        <div class="environment-category">
+          <h3>診所外觀</h3>
+          <div class="row gallery-container">
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage00.jpg" data-lightbox="clinic-gallery" data-title="診所外觀 - 清新明亮的門面設計">
+                <div class="gallery-item">
+                  <img src="./image/allage00.jpg" alt="診所外觀" class="lazy-load">
+                  <div class="caption">
+                    <h5>診所外觀</h5>
+                    <p>清新明亮的門面設計</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage01.jpg" data-lightbox="clinic-gallery" data-title="診所招牌 - 夜間燈光顯示">
+                <div class="gallery-item">
+                  <img src="./image/allage01.jpg" alt="診所招牌" class="lazy-load">
+                  <div class="caption">
+                    <h5>診所招牌</h5>
+                    <p>夜間燈光顯示</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 候診區 -->
+        <div class="environment-category">
+          <h3>候診與接待區</h3>
+          <div class="row gallery-container">
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage02.jpg" data-lightbox="clinic-gallery" data-title="寬敞的候診區 - 舒適的座椅與閱讀空間">
+                <div class="gallery-item">
+                  <img src="./image/allage02.jpg" alt="候診區" class="lazy-load">
+                  <div class="caption">
+                    <h5>寬敞的候診區</h5>
+                    <p>舒適的座椅與閱讀空間</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage03.jpg" data-lightbox="clinic-gallery" data-title="現代化接待櫃台 - 親切的服務人員">
+                <div class="gallery-item">
+                  <img src="./image/allage03.jpg" alt="接待櫃台" class="lazy-load">
+                  <div class="caption">
+                    <h5>現代化接待櫃台</h5>
+                    <p>親切的服務人員</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage04.jpg" data-lightbox="clinic-gallery" data-title="兒童友善角落 - 為小朋友準備的遊戲區">
+                <div class="gallery-item">
+                  <img src="./image/allage04.jpg" alt="兒童友善角落" class="lazy-load">
+                  <div class="caption">
+                    <h5>兒童友善角落</h5>
+                    <p>為小朋友準備的遊戲區</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 診療室 -->
+        <div class="environment-category">
+          <h3>診療室與醫療設備</h3>
+          <div class="row gallery-container">
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage05.jpg" data-lightbox="clinic-gallery" data-title="現代化診療室 - 先進的醫療設備">
+                <div class="gallery-item">
+                  <img src="./image/allage05.jpg" alt="診療室" class="lazy-load">
+                  <div class="caption">
+                    <h5>現代化診療室</h5>
+                    <p>先進的醫療設備</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage06.jpg" data-lightbox="clinic-gallery" data-title="X光檢查室 - 精準的檢查設備">
+                <div class="gallery-item">
+                  <img src="./image/allage06.jpg" alt="X光檢查室" class="lazy-load">
+                  <div class="caption">
+                    <h5>X光檢查室</h5>
+                    <p>精準的檢查設備</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage07.jpg" data-lightbox="clinic-gallery" data-title="復健治療區 - 專業的復健設備">
+                <div class="gallery-item">
+                  <img src="./image/allage07.jpg" alt="復健治療區" class="lazy-load">
+                  <div class="caption">
+                    <h5>復健治療區</h5>
+                    <p>專業的復健設備</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 其他設施 -->
+        <div class="environment-category">
+          <h3>其他設施</h3>
+          <div class="row gallery-container">
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage08.jpg" data-lightbox="clinic-gallery" data-title="藥局區域 - 完善的藥品管理">
+                <div class="gallery-item">
+                  <img src="./image/allage08.jpg" alt="藥局區域" class="lazy-load">
+                  <div class="caption">
+                    <h5>藥局區域</h5>
+                    <p>完善的藥品管理</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage09.jpg" data-lightbox="clinic-gallery" data-title="休息區 - 舒適的休息空間">
+                <div class="gallery-item">
+                  <img src="./image/allage09.jpg" alt="休息區" class="lazy-load">
+                  <div class="caption">
+                    <h5>休息區</h5>
+                    <p>舒適的休息空間</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <a href="./image/allage10.jpg" data-lightbox="clinic-gallery" data-title="衛教區 - 豐富的健康資訊">
+                <div class="gallery-item">
+                  <img src="./image/allage10.jpg" alt="衛教區" class="lazy-load">
+                  <div class="caption">
+                    <h5>衛教區</h5>
+                    <p>豐富的健康資訊</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row">
+          <!-- Logo區域 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="footer-logo-container">
+              <img src="./image/logo01.png" alt="樂活全齡綜合診所 Logo" class="footer-logo">
+              <h5 class="text-white mt-3">樂活全齡綜合診所</h5>
+              <p class="text-light small mt-2">專業醫療服務，照顧您全家健康</p>
+            </div>
+          </div>
+          
+          <!-- 網站導覽 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">網站導覽</h5>
+            <ul class="list-unstyled footer-nav">
+              <li class="mb-2"><a href="index.html"><i class="fa-solid fa-house me-2"></i>首頁</a></li>
+              <li class="mb-2"><a href="aboutus.html"><i class="bi bi-info-circle me-2"></i>關於全齡</a></li>
+              <li class="mb-2"><a href="Treatment.html"><i class="fa-solid fa-list me-2"></i>診療項目</a></li>
+              <li class="mb-2"><a href="health-Edu.html"><i class="bi bi-play-circle me-2"></i>衛教宣導</a></li>
+              <li class="mb-2"><a href="contact.html"><i class="fa-solid fa-envelope me-2"></i>聯絡我們</a></li>
+            </ul>
+          </div>
+          
+          <!-- 聯絡資訊 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">聯絡資訊</h5>
+            <ul class="list-unstyled footer-contact">
+              <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i>臺南市仁德區中正路二段1225號</li>
+              <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>06-2791515</li>
+            </ul>
+          </div>
+          
+          <!-- 社群連結 -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-white mb-3">關注我們</h5>
+            <div class="social-icons">
+              <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="me-2"><i class="bi bi-line"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="footer-divider my-4">
+        
+        <!-- 版權聲明 -->
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="mb-1 small">禁止任何網際網路服務業者轉錄其網路資訊之內容供人點閱。(但以網路搜尋或超連結方式，進入醫療機構之網址(域)直接點閱者，不在此限)</p>
+            <p class="mb-0 small">© 2025 樂活全齡綜合診所 All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 回到頂部按鈕 -->
+    <div class="to-top-container">
+      <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- Main JS -->
+    <script src="./js/main.js"></script>
+    
+    <!-- 圖片懶加載 -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 圖片懶加載
+        const lazyImages = document.querySelectorAll('.lazy-load');
+        
+        // 定義觀察器選項
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+        
+        // 創建觀察器
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('loaded');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+        
+        // 觀察所有懶加載圖片
+        lazyImages.forEach(image => {
+          observer.observe(image);
+        });
+        
+        // Lightbox 設置
+        lightbox.option({
+          'resizeDuration': 300,
+          'wrapAround': true,
+          'alwaysShowNavOnTouchDevices': true,
+          'disableScrolling': true
+        });
+      });
+    </script>
+  </body>
+</html> 

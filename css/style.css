@@ -1,0 +1,1085 @@
+/* 全域變數 - 方便未來修改和保持一致性 */
+@supports (-webkit-touch-callout: none) {
+  .carousel-item {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .carousel-item img {
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center top !important; /* 顯示圖片頂部 */
+    width: 100%;
+    transform: none !important;
+    max-width: 100%;
+  }
+
+  /* 修正 iOS Safari 上的輪播固定高度問題 */
+  picture {
+    display: block;
+    height: 100%;
+  }
+  
+  /* 確保輪播容器不會被截斷 */
+  .carousel {
+    max-height: 500px;
+    overflow: visible;
+  }
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  --primary-color: #B5AB92;
+  --secondary-color: #555;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+  --transition-speed: 0.3s;
+  --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  --box-shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+  --border-radius: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+}
+
+.navbar {
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.1));
+  position: sticky;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.mb-0 {
+  line-height: 1.8;
+}
+
+
+/* 不同區塊背景交替 */
+#video-intro {
+  background-color: #f8f9fa;
+}
+
+#about {
+  background-color: #ffffff;
+}
+
+.carousel {
+  margin-bottom: 100px;
+}
+
+.carousel-item {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+
+
+
+.doctor {
+  padding-top:5%;
+  padding-bottom: 5%;
+}
+
+.container h2 {
+  display: block;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+ 
+  
+}
+.item{
+  padding-top: 5%;
+}
+
+.item .row{
+  
+  padding-bottom: 5%;
+}
+
+.col-md-6 {
+  padding: 2%;
+}
+.allageweek {
+  margin-top: 150px;
+}
+
+.allageweek p {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.text-center{
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+
+
+.hh3 {
+  padding-bottom: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+  color:#535353;
+ 
+}
+
+.lead {
+  line-height: 1.5;
+  font-size: 20px;
+  color:#666768;
+  font-weight: 500;
+ 
+}
+
+.list-unstyled li{
+  color:#666768;
+}
+
+.col-lg-4 {
+  margin-left: 5%;
+}
+
+
+
+
+/* 為所有輪播圖添加圖片預加載，提高性能 */
+@media (prefers-reduced-motion: no-preference) {
+  .carousel-item img {
+    image-rendering: auto;
+  }
+}
+
+/* 為所有圖片添加平滑過渡 */
+.carousel-inner {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+  bottom: 30%;
+  left: 10%;
+  right: 10%;
+}
+
+.carousel-caption h1 {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.carousel-caption .lead {
+  margin-bottom: 0;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 平板裝置 (768px 到 1024px) */
+@media (max-width: 1024px) {
+  .carousel-item {
+    height: auto !important;
+  }
+  
+  .carousel-caption h1 {
+    font-size: 2.5rem;
+  }
+  
+  .carousel-caption .lead {
+    font-size: 1.2rem;
+  }
+}
+
+/* 手機裝置 (小於 768px) */
+@media (max-width: 768px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item,
+  .banner-picture {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+  .banner-img {
+    width: 100vw;
+    height: auto;
+    object-fit: contain;
+    background: #f8f8f8;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .carousel-caption {
+    padding: 15px;
+    bottom: 25%;
+  }
+  
+  .carousel-caption h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .carousel-caption .lead {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+/* 小型手機 (小於 576px) */
+@media (max-width: 576px) {
+  .carousel-item {
+    height:auto;
+  }
+  
+  .carousel-caption {
+    padding: 10px;
+    bottom: 20%;
+  }
+  
+  .carousel-caption h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .carousel-caption .lead {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+}
+
+
+/* 超小型手機 (更窄屏幕) */
+@media (max-width: 360px) {
+  .carousel-item {
+    height: auto;
+  }
+
+  .carousel-caption {
+    padding: 5px;
+    bottom: 10%;
+  }
+
+  .carousel-caption h1 {
+    font-size: 1rem;
+  }
+
+  .carousel-caption .lead {
+    font-size: 0.6rem;
+  }
+}
+
+/* iPhone 及其他現代手機 (393px 到 430px) */
+@media (max-width: 430px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item,
+  .banner-picture {
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+  }
+  .banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: #f8f8f8;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .carousel-caption {
+    padding: 8px;
+    bottom: 15%;
+    left: 5%;
+    right: 5%;
+  }
+  
+  .carousel-caption h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .carousel-caption .lead {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  /* 讓輪播導航按鈕更小 */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* 優化導航欄在 iPhone 上的顯示 */
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .navbar-brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* 優化服務卡片在 iPhone 上的顯示 */
+  .service-card {
+    margin-bottom: 1rem;
+  }
+
+  .service-card .card-body {
+    padding: 1rem;
+  }
+
+  .service-card i {
+    font-size: 2rem;
+  }
+
+  /* 優化聯絡資訊在 iPhone 上的顯示 */
+  .contact-card .card-body {
+    padding: 1rem;
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+  }
+}
+
+/* 影片區塊樣式 */
+
+
+
+
+.video-container {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding: 0;
+}
+
+
+.video-container img {
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+
+.video-container img:hover {
+  transform: scale(1.03);
+}
+
+.video-container .text-center {
+  padding: 30px;
+  background-color: #f8f9fa;
+}
+
+
+
+.video-thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-container:hover .video-thumbnail-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#videoModal .modal-content {
+  background-color: #000;
+  border: none;
+}
+
+#videoModal .modal-header {
+  background-color: #1a1a1a;
+  color: white;
+  border-bottom: 1px solid #333;
+}
+
+#videoModal .btn-close {
+  color: white;
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* 在手機版縮小視頻高度 */
+@media (max-width: 576px) {
+  #video-intro {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  #video-intro h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: bolder;
+  }
+  
+  #video-intro .lead {
+    font-size: 0.9rem;
+  }
+}
+
+.service-card {
+  transition: transform var(--transition-speed);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 50px 0 30px;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-speed);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.footer-logo-container {
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .footer-logo-container {
+    text-align: left;
+  }
+}
+
+.footer-nav li, .footer-contact li {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-speed);
+}
+
+.footer-nav li:hover {
+  transform: translateX(5px);
+}
+
+.footer-nav li a, .footer-contact li {
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav li a i, .footer-contact li i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-speed);
+  margin-right: 10px;
+}
+
+.social-icons a i {
+  font-size: 1.4rem;
+}
+
+.social-icons a:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 25px 0;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0 20px;
+  }
+  
+  .footer h5 {
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .social-icons a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-icons a i {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-logo-container {
+    margin-bottom: 10px;
+  }
+}
+
+.about-image {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.0);
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* 表格響應式設計 */
+.table-responsive {
+  margin-top: 1rem;
+}
+
+.table th, .table td {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .table th, .table td {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+} 
+
+
+
+/* 確保比例正確 */
+.ratio-16x9 {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 比例 */
+}
+
+.ratio-16x9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 診療時間表樣式 */
+.schedule-container {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.schedule-image {
+  width: 100%;
+  display: block;
+}
+
+.schedule-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 576px) {
+  .schedule-container {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* 聯絡我們區塊樣式 */
+.contact-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background-color: #fff;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-card .card-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 20px;
+  border-bottom: none;
+}
+
+.contact-card .card-header h4 {
+  margin-bottom: 0;
+  font-size: 1.3rem;
+}
+
+.contact-card .card-body {
+  padding: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.transportation-icon {
+  width: 35px;
+  height: 35px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.transportation-icon i {
+  font-size: 1.5rem;
+}
+
+.transportation-text h5 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.map-overlay {
+  text-align: center;
+  padding: 15px 0 5px;
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .contact-card {
+    margin-bottom: 20px;
+  }
+  
+  .contact-card .card-header h4 {
+    font-size: 1.2rem;
+  }
+  
+  .contact-info p, .transportation-text p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-card .card-header {
+    padding: 12px 15px;
+  }
+  
+  .contact-card .card-body {
+    padding: 15px;
+  }
+  
+  .transportation-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .transportation-icon i {
+    font-size: 1.3rem;
+  }
+}
+
+/* 添加圖片懶加載效果 */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* 添加按鈕過渡效果 */
+.btn {
+  transition: all var(--transition-speed);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 改進服務卡片圖標 */
+.service-card i {
+  transition: transform var(--transition-speed);
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.service-card:hover i {
+  transform: scale(1.1);
+}
+
+/* 平板與手機響應式優化 */
+@media (max-width: 992px) {
+  :root {
+    --transition-speed: 0.2s;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+}
+
+/* 打印媒體查詢 - 保證列印時的可讀性 */
+@media print {
+  .video-container, .carousel, .navbar-toggler, .btn, .play-icon {
+    display: none !important;
+  }
+  
+
+
+  body {
+    color: black;
+    background: white;
+    font-size: 12pt;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  
+  .contact-info, .schedule-container {
+    page-break-inside: avoid;
+  }
+  
+  .card, .contact-card {
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+}
+
+/* 添加淡入效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* 回到頂部按鈕 */
+.to-top-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+.to-top-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.to-top-button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.to-top-button i {
+  font-size: 24px;
+}
+
+.to-top-button:hover {
+  background-color: var(--dark-color);
+  transform: translateY(-5px);
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .to-top-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .to-top-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .to-top-button i {
+    font-size: 20px;
+  }
+}
+
+/* 自定義按鈕樣式 */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active {
+  background-color: #9e9580;
+  border-color: #9e9580;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover, 
+.btn-outline-primary:focus, 
+.btn-outline-primary:active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* 聯繫表單樣式 */
+.contact-form label {
+  font-weight: 500;
+  color: #555;
+}
+
+.contact-form .form-control {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(181, 171, 146, 0.25);
+}
+
+.contact-form textarea {
+  min-height: 120px;
+}
+
+.contact-form .form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.contact-form .form-check-label {
+  font-size: 0.9rem;
+}
+
+.contact-form .btn-primary {
+  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 6px;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-color: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .contact-form .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  
+  .contact-form [class*="col-"] {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* 表單驗證樣式 */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Banner RWD 統一設定 */
+.carousel,
+.carousel-inner,
+.carousel-item,
+.banner-picture {
+  height: 600px;
+  max-height: 600px;
+  min-height: 600px;
+}
+
+.banner-img {
+          width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 1024px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item,
+  .banner-picture {
+    height: 400px;
+    max-height: 400px;
+    min-height: 400px;
+        }
+}
+
+@media (max-width: 768px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item,
+  .banner-picture {
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+  .banner-img {
+    width: 100vw;
+    height: auto;
+    object-fit: contain;
+    background: #f8f8f8;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel,
+  .carousel-inner,
+        .carousel-item,
+  .banner-picture {
+    height: 220px;
+    max-height: 220px;
+    min-height: 220px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.carousel,
+        .carousel-inner,
+.carousel-item,
+.banner-picture {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .banner-img {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+}
