@@ -366,15 +366,15 @@
       </div>
     </section>
 
-    <!-- 頁尾 -->
+ <!-- 頁尾 -->
     <footer class="footer py-4">
       <div class="container">
         <div class="row">
           <!-- Logo區域 -->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <div class="footer-logo-container">
-              <img src="./image/logo01.png" alt="樂活全齡綜合診所 Logo" class="footer-logo">
-              <h2 class="text-white mt-3" style="font-size: 25px;" >樂活全齡綜合診所</h2>
+            <div class="footer-logo-container" >
+              <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo" class="footer-logo">
+              <h2 class="text-white mt-3" style="font-size: 25px;">樂活全齡綜合診所</h2>
               <p class="text-light small mt-2">專業醫療服務，照顧您全家健康</p>
             </div>
           </div>
@@ -398,18 +398,22 @@
               <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i>臺南市仁德區中正路二段1225號</li>
               <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>06-2791515</li>
             </ul>
-          </div>
-          
-          <!-- 社群連結 -->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-white mb-3">關注我們</h5>
-            <div class="social-icons">
-              <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="me-2"><i class="bi bi-line"></i></a>
-            </div>
-          </div>
+
+            <h5 class="text-white mb-3 mt-3">關注我們</h5>
+            <ul class="list-unstyled footer-contact">
+             <li class="social-icons">
+              <a href="https://www.facebook.com/profile.php?id=61560249694438" class="mx-2 text-center" alt="FB"><i class="bi bi-facebook mx-auto"></i></a>
+              </li>
+             <li class="social-icons">
+              <a href="https://www.youtube.com/channel/UCkEuvhxYM_oItVE_SrB5vyA" class="mx-2 text-center" alt="YT"><i class="bi bi-youtube mx-auto"></i></a>
+             </li>  
+            </ul>      
         </div>
+
+        <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-white mb-3 mt-3">粉絲專頁</h5>
+            <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61560249694438" data-tabs="timeline" data-width="" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/profile.php?id=61560249694438" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/profile.php?id=61560249694438">樂活全齡綜合診所</a></blockquote></div>
+            </div>       
         
         <hr class="footer-divider my-4">
         
@@ -423,7 +427,12 @@
       </div>
     </footer>
 
-    <!-- 回到頂部按鈕 -->
+    <!-- 添加頁尾信息 -->
+    <div class="to-top-container">
+      <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+    </div>
+
+     <!-- 回到頂部按鈕 -->
     <div class="to-top-container">
       <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
     </div>
@@ -434,6 +443,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <!-- Main JS -->
     <script src="./js/main.js"></script>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v23.0"></script>
     
     <!-- 圖片懶加載 -->
     <script>
@@ -472,5 +485,7 @@
         });
       });
     </script>
+
+    
   </body>
 </html> 
