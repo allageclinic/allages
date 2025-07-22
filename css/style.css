@@ -196,8 +196,19 @@ h2 {
   margin-left: 5%;
 }
 
+.social-icons {
+  float: left;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 20px;
+}
 
 
+ 
 
 /* 為所有輪播圖添加圖片預加載，提高性能 */
 @media (prefers-reduced-motion: no-preference) {
