@@ -128,12 +128,12 @@
     <!-- 門診時間表 -->
     <section id="weekfrom" class="py-5 bg-light">
       <div class="container item allageweek">
-        <h2 class="text-center mb-3 fade-in" id="weekRange" >本週門診表 <br>（7/14～7/18）</h2>
+        <h2 class="text-center mb-3 fade-in">本週門診表 <br><span id="weekRange">8/4～8/8</span></h2>
         <p class="txttxt mb-3" >醫師排班若有異動，以 FB 最新公告為主。</p>                                                           
         <div class="row">
           <div class="col-md-10  mx-auto">
             <div class="card service-card  fade-in" style="animation-delay: 0.1s;">
-              <img id="clinicSchedule" src="./images/week1.jpg" alt="門診時間表" class="week" loading="lazy">
+              <img id="clinicSchedule" src="./images/week2.jpg" alt="門診時間表" class="week" loading="lazy">
               <p id="weekInfo"></p>
             </div>
           </div>
@@ -423,50 +423,29 @@
 
   <script>
 
-      // 計算本週的區間（週一 ~ 週五）
-  const current = new Date();
-  const dayOfWeekToday = current.getDay(); // 星期幾（0=日, 1=一...）
-  const monday = new Date(current);
-  const friday = new Date(current);
 
-  // 設定週一日期
-  monday.setDate(current.getDate() - ((dayOfWeekToday + 6) % 7));
-  // 設定週五日期
-  friday.setDate(monday.getDate() + 4);
+ const weekMap = {
+  "2025-07-28": {
+    weekRange: "7/28～9/1",
+    image: "week5.jpg"
+  },
+  "2025-08-04": {
+    weekRange: "8/4～8/8",
+    image: "week1.jpg"
+  }
+};
 
-  // 顯示格式：MM/DD
-  const formatDate = (d) => `${d.getMonth() + 1}/${d.getDate()}`;
+const today = new Date();
+const mondayKey = new Date(today);
+mondayKey.setDate(today.getDate() - ((today.getDay() + 6) % 7));
 
-  // 插入至 HTML
-  const weekRangeText = `${formatDate(monday)} ～ ${formatDate(friday)}`;
-  const weekRangeEl = document.getElementById("weekRange");
-  if (weekRangeEl) weekRangeEl.innerText = weekRangeText;
+const mondayStr = mondayKey.toISOString().split("T")[0];
+const data = weekMap[mondayStr];
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth(); // 0-11
-  const firstDayOfMonth = new Date(year, month, 1);
-  const dayOfWeek = firstDayOfMonth.getDay(); // 本月第一天是星期幾
-  const day = today.getDate(); // 今天幾號
-
-  // 計算本月第幾週
-  const weekOfMonth = Math.ceil((day + dayOfWeek) / 7);
-
-  // 最多只顯示到 week5.jpg，避免溢位
-  const totalWeeks = 5;
-  const displayWeek = Math.min(weekOfMonth, totalWeeks);
-
-  // 設定圖片路徑（注意資料夾名稱為 images 而不是 image）
-  const imgPath = `./images/week${displayWeek}.jpg`;
-
-  // 插入圖片
-  const imgEl = document.getElementById("clinicSchedule");
-  if (imgEl) imgEl.src = imgPath;
-
-  // 顯示本月第幾週（除錯用）
-  // const infoEl = document.getElementById("weekInfo");
-  // if (infoEl) infoEl.innerText = `目前為 ${month + 1} 月第 ${weekOfMonth} 週`;
-  // ，顯示圖檔：week${displayWeek}.jpg
+if (data) {
+  document.getElementById("weekRange").innerText = data.weekRange;
+  document.getElementById("clinicSchedule").src = `./images/${data.image}`;
+}
 </script>
 
  <!-- JS -->
