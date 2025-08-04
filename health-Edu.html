@@ -46,6 +46,35 @@
     <!-- Lightbox CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
 
+<!-- Lightbox CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        1000: { items: 3 }
+      }
+    });
+  });
+</script>
+
+
+
+
     <style>
       /* 針對 iOS 設備的修正 */
       @supports (-webkit-touch-callout: none) {
@@ -248,58 +277,26 @@ input[type=radio]:checked {
 <!-- Owl Carousel HTML -->
 <div class="owl-carousel">
   <div>
-    <a href="./images/0121.jpg" data-lightbox="gallery">
-      <img src="./images/0121.jpg" alt="">
+    <a href="./images/0121.jpg" data-lightbox="gallery" data-title="鄰里手拉手衛教講座" data-alt="鄰里手拉手衛教講座" loading="lazy" >
+      <img src="./images/0121.jpg" alt="鄰里手拉手衛教講座">
     </a>
   </div>
   <div>
-    <a href="./images/0121-1.jpg" data-lightbox="gallery">
-      <img src="./images/0121-1.jpg" alt="">
+    <a href="./images/0121-1.jpg" data-lightbox="gallery"  data-title="鄰里手拉手衛教講座" data-alt="鄰里手拉手衛教講座"  loading="lazy">
+      <img src="./images/0121-1.jpg" alt="鄰里手拉手衛教講座">
     </a>
   </div>
   <div>
-    <a href="./images/0211.jpg" data-lightbox="gallery">
-      <img src="./images/0211.jpg" alt="">
+    <a href="./images/0211.jpg" data-lightbox="gallery"  data-title="鄰里手拉手衛教講座" data-alt="鄰里手拉手衛教講座"  loading="lazy">
+      <img src="./images/0211.jpg" alt="鄰里手拉手衛教講座">
     </a>
   </div>
   <div>
-    <a href="./images/0313.jpg" data-lightbox="gallery">
-      <img src="./images/0313.jpg" alt="">
+    <a href="./images/0313.jpg" data-lightbox="gallery"  data-title="鄰里手拉手衛教講座" data-alt="鄰里手拉手衛教講座" loading="lazy" >
+      <img src="./images/0313.jpg" alt="鄰里手拉手衛教講座">
     </a>
   </div>
 </div>
-
-<!-- Lightbox CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-
-<!-- Lightbox JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      responsive: {
-        0: { items: 1 },
-        600: { items: 2 },
-        1000: { items: 3 }
-      }
-    });
-  });
-</script>
-
-
-
-
-
-
 
     
 <!-- 影片介紹 -->
