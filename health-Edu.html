@@ -59,24 +59,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: false, // 禁用導航按鈕
-      autoplay: true,
-      autoplayTimeout: 3000,
-      responsive: {
-        0: { items: 1 },
-        600: { items: 2 },
-        1000: { items: 3 }
-      }
-    });
-  });
-</script>
-
-
 
 <style>
       /* 針對 iOS 設備的修正 */
@@ -121,14 +103,19 @@
 .lightbox {
   display: none;
   position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
   z-index: 9999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
+  flex-direction: row;
+}
+
+.lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
 .lightbox-content {
@@ -140,16 +127,34 @@
 
 .lightbox-close {
   position: absolute;
-  top: 30px;
-  right: 40px;
-  color: #ffffff;
+  top: 20px;
+  right: 30px;
   font-size: 40px;
-  font-weight: bold;
+  color: white;
   cursor: pointer;
   z-index: 10000;
 }
 
+.lightbox-prev, .lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10000;
+  user-select: none;
+}
 
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  color: #ccc;
+
+}
 
 </style>
   </head>
@@ -197,13 +202,13 @@
 
 
 <div class="owl-carousel">
-  <div><img class="img-fluid lightbox-trigger" src="./images/0121.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0121-1.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0211.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0313.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0410.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0619.jpg" alt="點擊放大"></div>
-  <div><img class="img-fluid lightbox-trigger" src="./images/0724.jpg" alt="點擊放大"></div>
+  <div><img src="./images/0121.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0121-1.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0211.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0313.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0410.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0619.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
+  <div><img src="./images/0724.jpg" alt="點擊放大" class="img-fluid lightbox-trigger" ></div>
 </div>
 
 
@@ -358,87 +363,31 @@
 
 <!-- Lightbox 遮罩 -->
 <div id="lightbox" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
-  <span class="lightbox-close" style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">×</span>
-  <img id="lightbox-img" class="lightbox-content" style="max-width: 90%; max-height: 90%; border: 5px solid white;">
+  <span class="lightbox-close" style="position: absolute; top: 20px; right: 30px; color: white; font-size: 30px; cursor: pointer;">&times;</span>
+  <span class="lightbox-prev">&#10094;</span>
+  <img id="lightbox-img" alt="放大圖片" class="lightbox-content" style="max-width: 90%; max-height: 90%; border: 5px solid white;">
+  <span class="lightbox-next">&#10095;</span>
 </div>
 
+
+
+
+
+
 <!-- JavaScript -->
-<script>
-  // 點圖片放大
-  document.querySelectorAll('.lightbox-trigger').forEach(function(img) {
-    img.addEventListener('click', function () {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      lightbox.style.display = 'flex';
-      lightboxImg.src = this.src;
-    });
-  });
-
-  // 點叉叉關閉
-  document.querySelector('.lightbox-close').addEventListener('click', function () {
-    document.getElementById('lightbox').style.display = 'none';
-  });
-
-  // 點背景關閉
-  document.getElementById('lightbox').addEventListener('click', function (e) {
-    if (!e.target.closest('.lightbox-content') && !e.target.closest('.lightbox-close')) {
-      this.style.display = 'none';
-    }
-  });
-</script>
-
-</script>
-
-
-     <script src="./js/traffic.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="./js/health-Edu.js"></script>
+<script src="./js/traffic.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: false, // 禁用導航按鈕
-      autoplay: true,
-      autoplayTimeout: 3000,
-      responsive: {
-        0: { items: 1 },
-        600: { items: 2 },
-        1000: { items: 3 }
-      }
-    });
 
-    $('.slick-slider').slick({
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-    });
-
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
     
-     <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v23.0"></script>
+<!-- Facebook SDK -->
+ <div id="fb-root"></div>
+ <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v23.0"></script>
 
 
 
