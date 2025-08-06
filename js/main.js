@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }); 
 
+
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.to-top-button').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
@@ -69,4 +70,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-<script src="./js/main.js"></script>
