@@ -59,3 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 }); 
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.to-top-button').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+});
+
+<script src="./js/main.js"></script>
