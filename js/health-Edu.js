@@ -63,7 +63,7 @@ $(document).ready(function(){
       margin: 10,
       nav: false, // 禁用導航按鈕
       autoplay: true,
-      autoplayTimeout: 3000,
+      autoplayTimeout: 5000,
       responsive: {
         0: { items: 1 },
         600: { items: 2 },
