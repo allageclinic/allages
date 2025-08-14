@@ -1,0 +1,23 @@
+# 樂活全齡綜合診所網站
+
+![Logo](./images/logo.png)
+
+本專案為 **樂活全齡綜合診所** 官方網站，提供診所服務介紹、醫療資訊、環境介紹及健康衛教內容。  
+網站採用 **HTML + CSS + JavaScript**，適合部署於 GitHub Pages。
+
+## 📌 網站內容
+
+- **首頁**：`index.html`  
+- **診所介紹**：`aboutus.html`  
+- **醫療團隊**：`Treatment.html`  
+- **環境介紹**：`environment.html`  
+- **健康衛教**：`health-Edu.html`  
+- **聯絡我們**：`contact.html`  
+
+## 🛠 技術架構
+
+- **HTML5 / CSS3 / JavaScript**
+- 響應式設計（RWD）
+- 圖片資源位於 `/images/`
+- 樣式檔案位於 `/css/` 與 `/scss/`
+- 腳本檔案位於 `/js/`
