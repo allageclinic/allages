@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 樂活全齡綜合診所網站
 
 ![Logo](./images/logo.png)
@@ -21,3 +22,6 @@
 - 圖片資源位於 `/images/`
 - 樣式檔案位於 `/css/` 與 `/scss/`
 - 腳本檔案位於 `/js/`
+=======
+<h1>Hello World</h1>
+>>>>>>> de90bb92a8a864c9caafd39eb36ccfeafdd078a0
