@@ -8,28 +8,33 @@
 
 
 <url>
-  <loc>https://allageclinic.github.io/allages/index.html</loc>
-  <lastmod>2025-08-06T06:51:03+00:00</lastmod>
+  <loc>https://allageclinic.github.io/allages/</loc>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://allageclinic.github.io/allages/index.html</loc>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://allageclinic.github.io/allages/aboutus.html</loc>
-  <lastmod>2025-08-06T06:51:03+00:00</lastmod>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://allageclinic.github.io/allages/Treatment.html</loc>
-  <lastmod>2025-08-06T06:51:03+00:00</lastmod>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://allageclinic.github.io/allages/health-Edu.html</loc>
-  <lastmod>2025-08-06T06:51:03+00:00</lastmod>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://allageclinic.github.io/allages/contact.html</loc>
-  <lastmod>2025-08-06T06:51:03+00:00</lastmod>
+  <lastmod>2025-08-07T14:02:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
