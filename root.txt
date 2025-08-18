@@ -9,7 +9,7 @@
 
 - **首頁**：`index.html`  
 - **診所介紹**：`aboutus.html`  
-- **醫療團隊**：`Treatment.html`  
+- **醫療團隊**：`treatment.html`  
 - **環境介紹**：`environment.html`  
 - **健康衛教**：`health-Edu.html`  
 - **聯絡我們**：`contact.html`  
