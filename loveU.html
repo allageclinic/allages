@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>給女友的愛心驚喜</title>
+  <style>
+    body {
+      height: 100vh;
+      background: #fff5f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .love-btn {
+      font-size: 2rem;
+      padding: 1em 2em;
+      background: #ff7eb9;
+      border: none;
+      border-radius: 999px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 16px #ffd1e4;
+      transition: background 0.2s;
+    }
+    .love-btn:hover {
+      background: #ff3f8b;
+    }
+    .heart {
+      position: fixed;
+      font-size: 2.5rem;
+      color: #ff6f91;
+      pointer-events: none;
+      animation: floatUp 1.3s ease-out forwards;
+      z-index: 9999;
+      filter: drop-shadow(0 2px 8px #ffbdd6);
+    }
+    @keyframes floatUp {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.3) rotate(-10deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="love-btn" onclick="showHeart()">點我一下💗</button>
+
+  <script>
+    function showHeart() {
+      // 產生一顆愛心
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+
+      // 隨機出現的位置
+      const x = Math.random() * (window.innerWidth - 40);
+      const y = Math.random() * (window.innerHeight - 80);
+
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+
+      document.body.appendChild(heart);
+
+      // 1.3秒後自動消失
+      setTimeout(() => {
+        heart.remove();
+      }, 1300);
+    }
+  </script>
+</body>
+</html>
