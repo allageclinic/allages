@@ -50,14 +50,16 @@
 <body>
   <button class="love-btn" onclick="showHeart()">點我一下💗</button>
 
-  <script>
-    function showHeart() {
-      // 產生一顆愛心
+ 
+     <!-- function showHeart() {
+       產生一顆愛心
       const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '❤️';
+       heart.className = 'heart';
+     heart.textContent = '❤️';
+      
 
-      // 隨機出現的位置
+
+      隨機出現的位置
       const x = Math.random() * (window.innerWidth - 40);
       const y = Math.random() * (window.innerHeight - 80);
 
@@ -66,11 +68,60 @@
 
       document.body.appendChild(heart);
 
-      // 1.3秒後自動消失
+    1.3秒後自動消失
       setTimeout(() => {
         heart.remove();
       }, 1300);
-    }
+    } -->
+
+    <script>
+//   let clickCount = 0;
+//   function showHeart() {
+//     clickCount++;
+//     const heart = document.createElement('div');
+//     heart.className = 'heart';
+//     heart.textContent = clickCount % 4 === 1 ? '❤️' : '🐤' : '🐸' : '🐧';
+
+//     // 隨機出現的位置
+//     const x = Math.random() * (window.innerWidth - 40);
+//     const y = Math.random() * (window.innerHeight - 80);
+
+//     heart.style.left = x + 'px';
+//     heart.style.top = y + 'px';
+
+//     document.body.appendChild(heart);
+
+//     setTimeout(() => {
+//       heart.remove();
+//     }, 1300);
+//   }
+
+
+  // ...existing code...
+let clickCount = 0;
+function showHeart() {
+  clickCount++;
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  // 用陣列依序顯示表情符號
+  const emojis = ['❤️', '🐤', '🐸', '🐧' , '🐹' , '🦒' , '🐷'];
+  heart.textContent = emojis[(clickCount - 1) % emojis.length];
+
+  // 隨機出現的位置
+  const x = Math.random() * (window.innerWidth - 40);
+  const y = Math.random() * (window.innerHeight - 80);
+
+  heart.style.left = x + 'px';
+  heart.style.top = y + 'px';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 1300);
+}
+// ...existing code...
+</script>
   </script>
 </body>
 </html>
