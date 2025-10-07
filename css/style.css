@@ -198,11 +198,20 @@ h2 {
 
 .list-unstyled li{
   color:#666768;
-  margin-left: 20%;
+ 
+}
+
+.list-unsty li {
+  color:#666768;
+  margin-left: 38%;
 }
 
 .list-unstyled .btn{
  margin-top: 10px;
+}
+
+.list-unsty li .btn{
+ margin-left: 35%;
 }
 
 .mb-2 .btn{
