@@ -198,7 +198,6 @@ h2 {
 
 .list-unstyled li{
   color:#666768;
- 
 }
 
 .list-unsty li {
@@ -213,6 +212,16 @@ h2 {
 .list-unsty li .btn{
  margin-left: 35%;
 }
+
+.list-unstyl li{
+  color:#666768;
+  margin-left: 18%;
+}
+
+.list-unstyl li .btn {
+  margin-left: 12%;
+}
+
 
 .mb-2 .btn{
   margin-left: 15%;
