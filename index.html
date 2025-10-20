@@ -332,10 +332,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-
-  
-    
-    <!-- 影片介紹 -->
+<!-- 影片介紹 -->
 
 <section id="allage-intro" class="py-5 bg-light">
   <div class="container">
@@ -522,48 +519,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script>
 
 document.addEventListener("DOMContentLoaded", function() {
-  const weekMap = {
-    "2025-09-29": {
-      weekRange: "09/29~10/03",
-      image: "week_1.jpg"
-    },
-    "2025-10-06": {
-      weekRange: "10-06~10/10",
-      image: "week_2.jpg"
-    },
-    "2025-10-13": {
-      weekRange: "10-13~10/17",
-      image: "week_3.jpg"
-    },
-    "2025-10-20": {
-      weekRange: "10/20~10/24",
-      image: "week_4.jpg"
-    },
-    "2025-10-27": {
-      weekRange: "10/27~10/31",
-      image: "week_5.jpg"
-    }
-  };
-
+  // 取得今天
   const today = new Date();
-  const mondayKey = new Date(today);
-  mondayKey.setDate(today.getDate() - ((today.getDay() + 6) % 7));
 
-  function toLocalYMD(d) {
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${y}-${m}-${day}`;
+  // 找出本週一
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+
+  // 找出本月第一個週一（改為：回傳「包含當月1日」那一週的週一，若1日當天為週一就回傳1日；否則回傳在1日前的週一）
+  function getFirstMondayOnOrBeforeFirstDay(year, month) {
+    const firstDay = new Date(year, month, 1);
+    // (firstDay.getDay()+6)%7 會把星期一轉成 0，星期日轉成 6
+    const offset = (firstDay.getDay() + 6) % 7;
+    const monday = new Date(firstDay);
+    monday.setDate(firstDay.getDate() - offset);
+    // 回傳的 monday 可能落在前一個月，這是預期行為
+    return monday;
   }
-  const mondayStr = toLocalYMD(mondayKey);
-  const data = weekMap[mondayStr];
 
-  console.log("mondayStr:", mondayStr, "data:", data);
-
-  if (data) {
-    document.getElementById("weekRange").innerText = data.weekRange;
-    document.getElementById("clinicSchedule").src = `./images/${data.image}`;
+  // 計算本週是以「包含1日的那週之週一」為起點的第幾週
+  function getWeekNumberFromFirstMonday(date) {
+    const firstMonday = getFirstMondayOnOrBeforeFirstDay(date.getFullYear(), date.getMonth());
+    const diff = Math.floor((date - firstMonday) / (7 * 24 * 60 * 60 * 1000));
+    return diff + 1;
   }
+
+  const weekNum = getWeekNumberFromFirstMonday(monday);
+  const weekImg = `week_${weekNum}.jpg`;
+
+  // debug: 在 console 檢查計算結果
+  console.log('today:', today.toISOString().slice(0,10), 
+              'monday:', monday.toISOString().slice(0,10),
+              'firstMonday:', getFirstMondayOnOrBeforeFirstDay(monday.getFullYear(), monday.getMonth()).toISOString().slice(0,10),
+              'weekNum:', weekNum, 'weekImg:', weekImg);
+
+  // 產生週期字串
+  function getWeekRange(monday) {
+    const end = new Date(monday);
+    end.setDate(monday.getDate() + 4);
+    const pad = n => String(n).padStart(2, '0');
+    return `${pad(monday.getMonth() + 1)}/${pad(monday.getDate())}~${pad(end.getMonth() + 1)}/${pad(end.getDate())}`;
+  }
+  const weekRange = getWeekRange(monday);
+
+  // 設定畫面
+  document.getElementById("weekRange").innerText = weekRange;
+  document.getElementById("clinicSchedule").src = `./images/${weekImg}`;
 });
 </script>
 
