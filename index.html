@@ -215,14 +215,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 class="text-center mb-3 fade-in">本週門診表</h2>
         <p class="txttxt mb-3" >〈週三時間為14:00-17:00〉</p> 
         <p class="txttxt mb-3" >※醫師排班若有異動，以 FB 最新公告為主。</p>                                                           
-        <div class="row">
-          <div class="col-md-10  mx-auto">
-            <div class="card service-card  fade-in" style="animation-delay: 0.1s;">
-              <img id="clinicSchedule" src="./images/week_1.jpg" alt="門診時間表" class="week" loading="lazy">
-              <p id="weekInfo"></p>
-            </div>
-          </div>
-        </div>  
+        <div class="card service-card  fade-in" style="animation-delay: 0.1s;">
+          <div class="mb-2 text-center">
+          <span id="weekRange" class="fw-bold"></span>
+        </div>
+        <img id="clinicSchedule" src="./images/week_1.jpg" alt="門診時間表" class="week" loading="lazy">
+        <p id="weekInfo"></p>
+        </div>
       </div>
     </section>
 
@@ -522,41 +521,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <script>
 
+document.addEventListener("DOMContentLoaded", function() {
+  const weekMap = {
+    "2025-09-29": {
+      weekRange: "09/29~10/03",
+      image: "week_1.jpg"
+    },
+    "2025-10-06": {
+      weekRange: "10-06~10/10",
+      image: "week_2.jpg"
+    },
+    "2025-10-13": {
+      weekRange: "10-13~10/17",
+      image: "week_3.jpg"
+    },
+    "2025-10-20": {
+      weekRange: "10/20~10/24",
+      image: "week_4.jpg"
+    },
+    "2025-10-27": {
+      weekRange: "10/27~10/31",
+      image: "week_5.jpg"
+    }
+  };
 
- const weekMap = {
-  "2025-09-01": {
-    weekRange: "09/01~09/05",
-    image: "week_1.jpg"
-  },
-  "2025-09-08": {
-    weekRange: "09/08~09/12",
-    image: "week_2.jpg"
-  },
-  "2025-09-15": {
-    weekRange: "09/15~09/19",
-    image: "week_3.jpg"
-  },
-  "2025-09-22": {
-    weekRange: "09/22~09/26",
-    image: "week_4.jpg"
-  },
-  "2025-09-29": {
-    weekRange: "09/29~10/03",
-    image: "week_5.jpg"
+  const today = new Date();
+  const mondayKey = new Date(today);
+  mondayKey.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+
+  function toLocalYMD(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
   }
-};
+  const mondayStr = toLocalYMD(mondayKey);
+  const data = weekMap[mondayStr];
 
-const today = new Date();
-const mondayKey = new Date(today);
-mondayKey.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+  console.log("mondayStr:", mondayStr, "data:", data);
 
-const mondayStr = mondayKey.toISOString().split("T")[0];
-const data = weekMap[mondayStr];
-
-if (data) {
-  document.getElementById("weekRange").innerText = data.weekRange;
-  document.getElementById("clinicSchedule").src = `./images/${data.image}`;
-}
+  if (data) {
+    document.getElementById("weekRange").innerText = data.weekRange;
+    document.getElementById("clinicSchedule").src = `./images/${data.image}`;
+  }
+});
 </script>
 
  <!-- JS -->
