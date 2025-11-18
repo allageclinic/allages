@@ -1,3 +1,151 @@
+
+   body {
+      font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
+      background-color: #f5f7fb;
+    }
+
+    .section-env {
+      padding: 60px 0 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .section-title p {
+      color: #999;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .section-title span.line {
+      display: inline-block;
+      width: 80px;
+      height: 1px;
+      background: #ccc;
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+
+    /* 左側分類欄 */
+    .env-sidebar {
+      background-color: #ffffff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .env-sidebar-header {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .env-sidebar-header small {
+      display: block;
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    .env-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .env-menu li a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 20px;
+      color: #555;
+      text-decoration: none;
+      border-bottom: 1px solid #f3f3f3;
+      transition: all .2s;
+      font-weight: bolder;
+      text-align: center;
+    }
+    .env-menu li a.active,
+    .env-menu li a:hover {
+      background-color: #949494;
+      color: #fff;
+    }
+
+    .env-contact {
+      padding: 20px 24px 24px;
+      text-align: center;
+    }
+    .env-contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 30px;
+      color: var(--primary-color);
+    }
+    .env-contact p {
+      margin: 0;
+      font-size: 20px;
+      color: #888;
+    }
+    .env-contact strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 30px;
+      color: var(--primary-color);
+      font-weight: bolder;
+      padding: 10px;
+    }
+
+    /* 右側卡片 */
+    .env-card {
+      background-color: #ffffff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0,0,0,0.04);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .env-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .env-card-img {
+      background-color: #c5c7d6; /* 預設底色，放照片後可移除 */
+      aspect-ratio: 4 / 3;      /* 固定比例 */
+      overflow: hidden;
+    }
+    .env-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .env-card-caption {
+      padding: 12px 16px;
+      background-color: #f5f5f5;
+      font-size: 18px;
+      text-align: center;
+      color: #555;
+    }
+
+    /* RWD 調整 */
+    @media (max-width: 991.98px) {
+      .section-env {
+        padding-top: 40px;
+      }
+      .env-sidebar {
+        margin-bottom: 20px;
+      }
+    }
+
+
 /* 全域變數 - 方便未來修改和保持一致性 */
 @supports (-webkit-touch-callout: none) {
   .carousel-item {
