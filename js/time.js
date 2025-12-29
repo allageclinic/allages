@@ -9,7 +9,7 @@
 
   // 顯示圖片 week1.jpg ~ week5.jpg（根據週數切換）
   const displayWeek = weekOfMonth;
-  const imgPath = `./image/week${displayWeek}.jpg`;
+  const imgPath = `./image/week_${displayWeek}.jpg`;
 
   document.getElementById("clinicSchedule").src = imgPath;
 
