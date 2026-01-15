@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
           `電話: ${phone}%0D%0A` +
           `電子郵件: ${email}%0D%0A` +
           `%0D%0A訊息內容:%0D%0A${message}`;
+          
         
         // 設置表單的 body 參數
         const hiddenInput = document.createElement('input');
