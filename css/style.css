@@ -415,6 +415,222 @@ h5 {
 }
 
 
+
+
+/* ===== 基本容器 ===== */
+.sect3{
+  padding: 60px 0;
+  background: #fff;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.sect-title{
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.sect-title span{
+  display:block;
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 10px;
+  color:#999;
+  line-height:1;
+  margin-bottom: 10px;
+}
+
+.sect-title h2{
+  margin:0;
+  font-size: 34px;
+  font-weight: 500;
+  color:#3f4443;
+  letter-spacing: 1px;
+}
+
+.products-sect{
+  position: relative;
+}
+
+/* ===== SEE MORE 圓形按鈕（不用 icon font）===== */
+.products-sect .btn.more{
+  position:absolute;
+  top: 52px;
+  left: calc(50% + 140px);
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  background:#fff;
+  box-shadow: 0 0 10px rgba(0,0,0,.08);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.products-sect .btn.more i{
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #A3DAD6;
+  transform: translateX(1px);
+  transition: border-left-color .25s ease;
+}
+
+.products-sect .btn.more:hover{
+  background:#A3DAD6;
+  transform: scale(1.12);
+}
+.products-sect .btn.more:hover i{
+  border-left-color:#fff;
+}
+
+/* ===== 列表：用 grid 比 float 穩 ===== */
+.products-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ===== 卡片 ===== */
+.products-list .box{
+  position: relative;
+  overflow: hidden;
+  border-radius: 0; /* 你要更醫美乾淨就維持 0 */
+  max-width: 330px;
+  margin: 0 auto;
+  transition: transform .25s ease;
+}
+
+.products-list .pic-box{
+  position: relative;
+  overflow: hidden;
+  background:#f3f3f3;
+}
+
+.products-list .pic-box img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio: 3 / 4; /* 建議固定比例：版面整齊 */
+  object-fit: cover;
+}
+
+/* ===== NEW 角標（不用圖檔，純 CSS）===== */
+/* .products-list .box.new::before{
+  content:"NEW";
+  position:absolute;
+  top: 12px;
+  left: 8px;
+  z-index: 5;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color:#fff;
+  background:#95D4D0;
+  padding: 6px 10px;
+} */
+
+/* ===== 文字區塊 ===== */
+.products-list .txt{
+  padding: 15px;
+  background: transparent;
+  transition: all .3s ease;
+  position: relative;
+}
+
+.products-list .name{
+  margin:0;
+  font-size: 18px;
+  font-weight: 500;
+  color:#333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.products-list .line{
+  width: 30px;
+  height: 1px;
+  background:#95D4D0;
+  margin: 15px 0;
+  transition: width .5s ease;
+}
+
+.products-list .description{
+  margin:0;
+  font-size: 14px;
+  color:#888;
+  line-height: 1.45;
+  letter-spacing: .4px;
+
+  display:-webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+   /* fallback：避免不支援時爆長 */
+  max-height: calc(1.45em * 3);
+
+  height: 0;              /* 預設收起 */
+  transition: height .3s ease;
+}
+
+/* ===== Hover 行為：上推、顯示摘要、line 變長 ===== */
+.products-list .box:hover .txt{
+  background:#fff;
+  margin-top: -115px;
+  padding: 30px 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,.08);
+}
+
+.products-list .box:hover .line{
+  width:100%;
+}
+
+.products-list .box:hover .description{
+  height: 60px;
+}
+
+/* ===== 點擊覆蓋連結 ===== */
+.products-list .cover{
+  position:absolute;
+  inset:0;
+  z-index: 10;
+  font-size:0;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 1000px){
+  .products-list{ grid-template-columns: repeat(2, 1fr); }
+  .products-sect .btn.more{
+    top: 44px;
+    left: calc(50% + 90px);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 520px){
+  .products-list{ grid-template-columns: 1fr; }
+  .products-sect .btn.more{ position: static; margin: 0 auto 20px; }
+  .sect-title{ margin-bottom: 30px; }
+  .sect-title h2{ font-size: 28px; }
+  .sect-title span{ font-size: 16px; letter-spacing: 6px; }
+}
+
+
+
+
  
 
 /* 為所有輪播圖添加圖片預加載，提高性能 */

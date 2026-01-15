@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const message = formElements.message.value;
         
         // 修改表單的 action 屬性使其包含更有用的主旨
-        contactForm.action = `mailto:wowamin125@gmail.com?subject=${encodeURIComponent(subject)}`;
+        contactForm.action = `mailto:happylife.lhzs@gmail.com?subject=${encodeURIComponent(subject)}`;
         
         // 準備郵件正文
         const mailBody = 
