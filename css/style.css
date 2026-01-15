@@ -523,7 +523,7 @@ h5 {
   display:block;
   width:100%;
   height:auto;
-  aspect-ratio: 3 / 4; /* 建議固定比例：版面整齊 */
+  aspect-ratio: 4 / 6; /* 建議固定比例：版面整齊 */
   object-fit: cover;
 }
 
