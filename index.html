@@ -35,10 +35,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
     <!-- CSS -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/doctor.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+   
     
 
      <!-- JavaScript Bundle with Popper -->
@@ -260,87 +263,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </section>
 
-<section class="sect3">
-  <div class="container">
-    <div class="products-sect">
-      <!-- <div class="sect-title">
-      </div> -->
+<div class="slide-container swiper">
+  <div class="slide-content">
+    <h2 class="text-center mb-5 fade-in">預防醫學</h2>
+    <div class="card-wrapper swiper-wrapper">
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-image">
+            <img src="./images/prp.jpg" alt="療程名稱" loading="lazy">
+          </div>
+        </div>  
+      </div>
+      
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-image">
+            <img src="./images/hpv-vaccine.jpg" alt="療程名稱" loading="lazy">
+          </div>
+        </div>  
+      </div>
+      
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-image">
+            <img src="./images/u-relax.jpg" alt="療程名稱" loading="lazy">
+          </div>
+        </div>  
+      </div>
+      
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-image">
+            <img src="./images/muti.jpg" alt="療程名稱" loading="lazy">
+          </div>
+        </div>  
+      </div>
 
-      <a href="#" class="btn more" aria-label="See more projects">
-        <i></i>
-      </a>
-
-      <ul class="products-list">
-        <li class="item">
-          <article class="box new">
-            <div class="pic-box">
-              <img src="./images/herpes-zoster-vaccine.jpg" alt="療程名稱" loading="lazy">
-            </div>
-
-            <div class="txt">
-              <h3 class="name">帶狀皰疹</h3>
-              <div class="line"></div>
-              <!-- <p class="description">一段摘要，最多三行，hover 才完整顯示。</p> -->
-            </div>
-
-            <!-- <a class="cover" href="YOUR_LINK" aria-label="前往療程頁"></a> -->
-          </article>
-        </li>
-
-        <li class="item">
-          <article class="box new">
-            <div class="pic-box">
-              <img src="./images/hpv-vaccine.jpg" alt="療程名稱" loading="lazy">
-            </div>
-
-            <div class="txt">
-              <h3 class="name">HPV疫苗</h3>
-              <div class="line"></div>
-              <!-- <p class="description">一段摘要，最多三行，hover 才完整顯示。</p> -->
-            </div>
-
-            <!-- <a class="cover" href="YOUR_LINK" aria-label="前往療程頁"></a> -->
-          </article>
-        </li>
-
-
-        <li class="item">
-          <article class="box new">
-            <div class="pic-box">
-              <img src="./images/prp.jpg" alt="療程名稱" loading="lazy">
-            </div>
-
-            <div class="txt">
-              <h3 class="name">PRP</h3>
-              <div class="line"></div>
-              <!-- <p class="description">一段摘要，最多三行，hover 才完整顯示。</p> -->
-            </div>
-
-            <!-- <a class="cover" href="YOUR_LINK" aria-label="前往療程頁"></a> -->
-          </article>
-        </li>
-
-        <li class="item">
-          <article class="box new">
-            <div class="pic-box">
-              <img src="./images/u-relax-feminine-probiotic.jpg" alt="療程名稱" loading="lazy">
-            </div>
-
-            <div class="txt">
-              <h3 class="name">優芮珂絲</h3>
-              <div class="line"></div>
-              <!-- <p class="description">一段摘要，最多三行，hover 才完整顯示。</p> -->
-            </div>
-
-            <!-- <a class="cover" href="YOUR_LINK" aria-label="前往療程頁"></a> -->
-          </article>
-        </li>
-
-        
-      </ul>
+      <div class="card swiper-slide">
+        <div class="image-content">
+          <div class="card-image">
+            <img src="./images/herpes-zoster-vaccine.jpg" alt="療程名稱" loading="lazy">
+          </div>
+        </div>  
+      </div>
     </div>
   </div>
-</section>
+
+  <div class="swiper-button-next swiper-navBtn"></div>
+  <div class="swiper-button-prev swiper-navBtn"></div>
+  <div class="swiper-pagination"></div>
+</div>
 
 
 
@@ -406,8 +378,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 
 
-   
-
      <section id="doctor" class="py-5">
       <div class="container doctor">
         <h2 class="text-center mb-5 fade-in">醫師團隊</h2>                                                                                                                                            
@@ -467,13 +437,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
 
 
-
-
-
-    
-
-
- 
 
 </div>
     <!-- 聯絡我們 -->
@@ -616,6 +579,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="./js/Schedule-v2.js"></script>
   <script src="./js/traffic.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
   
 
