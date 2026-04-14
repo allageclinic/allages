@@ -421,9 +421,8 @@ h5 {
     margin: 0 auto;
 }
 
-.slide-content { 
-    overflow: hidden;
-    border-radius: 25px;
+.slide-container.swiper {
+    position: relative;
 }
 
 .card {
@@ -477,6 +476,8 @@ h5 {
 
 .button:hover { background: #265DF2; }
 
+
+
 .swiper-navBtn {
     color: #6E93F7 !important;
     transition: all .3s ease;
@@ -486,8 +487,19 @@ h5 {
 
 .swiper-navBtn::before, .swiper-navBtn::after { font-size: 40px !important; }
 
+.swiper-button-next,
+.swiper-button-prev,
+.carousel-control-next,
+.carousel-control-prev {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+}
+
 .swiper-button-next { right: 0 !important; }
 .swiper-button-prev { left: 0 !important; }
+
 
 .swiper-pagination-bullet { background-color: #6E93F7 !important; opacity: 1 !important; }
 .swiper-pagination-bullet-active { background-color: #4070F4 !important; }
@@ -1406,5 +1418,45 @@ body {
     object-fit: cover;
     display: block;
     margin: 0 auto;
+  }
+}
+
+/* Keep the homepage hero height stable while Bootstrap fades between slides. */
+@media (max-width: 1024px) {
+  #home #carouselExampleFade,
+  #home #carouselExampleFade .carousel-inner,
+  #home #carouselExampleFade .carousel-item,
+  #home #carouselExampleFade .banner-picture {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2133 / 833;
+  }
+}
+
+@media (max-width: 768px) {
+  #home #carouselExampleFade,
+  #home #carouselExampleFade .carousel-inner,
+  #home #carouselExampleFade .carousel-item,
+  #home #carouselExampleFade .banner-picture {
+    aspect-ratio: 1600 / 833;
+  }
+}
+
+@media (max-width: 576px) {
+  #home #carouselExampleFade,
+  #home #carouselExampleFade .carousel-inner,
+  #home #carouselExampleFade .carousel-item,
+  #home #carouselExampleFade .banner-picture {
+    aspect-ratio: 1200 / 1521;
+  }
+}
+
+@media (max-width: 360px) {
+  #home #carouselExampleFade,
+  #home #carouselExampleFade .carousel-inner,
+  #home #carouselExampleFade .carousel-item,
+  #home #carouselExampleFade .banner-picture {
+    aspect-ratio: 750 / 1038;
   }
 }
