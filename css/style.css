@@ -3,6 +3,10 @@
       font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
       background-color: #f5f7fb;
     }
+body {
+      font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
+      background-color: #f5f7fb;
+    }
 
     .section-env {
       padding: 60px 0 80px;
@@ -30,7 +34,7 @@
       vertical-align: middle;
     }
 
-    /* 撌血??甈?*/
+    /* 環境側邊欄 */
     .env-sidebar {
       background-color: #ffffff;
       box-shadow: 0 0 15px rgba(0,0,0,0.06);
@@ -51,6 +55,8 @@
       opacity: 0.85;
       margin-top: 6px;
     }
+    
+
 
     .env-menu {
       list-style: none;
@@ -104,7 +110,7 @@
       padding: 10px;
     }
 
-    /* ?喳?∠? */
+    /* 環境卡片 */
     .env-card {
       background-color: #ffffff;
       border-radius: 4px;
@@ -117,8 +123,8 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
     .env-card-img {
-      background-color: #c5c7d6; /* ?身摨嚗?抒?敺蝘駁 */
-      aspect-ratio: 4 / 3;      /* ?箏?瘥? */
+      background-color: #c5c7d6; /* 圖片佔位背景 */
+      aspect-ratio: 4 / 3;      /* 長寬比 */
       overflow: hidden;
     }
     .env-card-img img {
@@ -135,7 +141,7 @@
       color: #555;
     }
 
-    /* RWD 隤踵 */
+    /* RWD 調整 */
     @media (max-width: 991.98px) {
       .section-env {
         padding-top: 40px;
@@ -146,7 +152,7 @@
     }
 
 
-/* ?典?霈 - ?嫣噶?芯?靽格?????湔?*/
+/* 行動裝置支援 - 修正 iOS Safari 圖片顯示問題 */
 @supports (-webkit-touch-callout: none) {
   .carousel-item {
     height: auto !important;
@@ -156,19 +162,19 @@
   .carousel-item img {
     height: 100% !important;
     object-fit: cover;
-    object-position: center top !important; /* 憿舐內??? */
+    object-position: center top !important; /* 置中靠上 */
     width: 100%;
     transform: none !important;
     max-width: 100%;
   }
 
-  /* 靽格迤 iOS Safari 銝?頛芣?箏?擃漲?? */
+  /* 修正 iOS Safari 圖片顯示問題 */
   picture {
     display: block;
     height: 100%;
   }
   
-  /* 蝣箔?頛芣摰孵銝?鋡急??*/
+  /* 限制輪播最大高度 */
   .carousel {
     max-height: 500px;
     overflow: visible;
@@ -199,7 +205,6 @@
   border-radius: 5px;
   font-weight: bolder;
   
-
 }
 .nav-item a {
   color: #555;
@@ -223,8 +228,6 @@
   padding-top: 20px;
   
 }
-
-
 
 
 
@@ -272,7 +275,7 @@ h2 {
 }
 
 
-/* 銝??憛??臭漱??*/
+/* 影片介紹區 */
 #video-intro {
   background-color: #f8f9fa;
 }
@@ -300,7 +303,6 @@ h2 {
   transform: translateZ(0);
   will-change: transform;
 }
-
 
 
 
@@ -511,10 +513,54 @@ h2 {
 .swiper-button-next { right: 0 !important; }
 .swiper-button-prev { left: 0 !important; }
 
+/* 預設隱藏原生圖示，改用 Google Material Icons 作為箭頭 */
+./* 導覽箭頭：圓形白底、灰色圖示、浮起感、垂直置中 */
+.swiper-navBtn,
+.swiper-button-next,
+.swiper-button-prev,
+.carousel-control-next,
+.carousel-control-prev {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #808080 !important; /* 圖示顏色（灰） */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+  transition: box-shadow 0.18s ease, color 0.18s ease, transform 0.18s ease !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 30 !important;
+  border: none !important;
+}
+
+/* 取消圖像背景（Bootstrap/Swiper 預設） */
+.carousel-control-next-icon,
+.carousel-control-prev-icon,
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  background-image: none !important;
+}
+
+
+
+
+/* 懸停時的浮起效果 */
+.swiper-navBtn:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:hover,
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+  transform: translateY(calc(-50% - 6px)) !important;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.18) !important;
+  color: #606060 !important;
+}
+
 
 .swiper-pagination-bullet { background-color: #6E93F7 !important; opacity: 1 !important; }
 .swiper-pagination-bullet-active { background-color: #4070F4 !important; }
-
 
 @media screen and (max-width: 768px) {
     .slide-content { margin: 0 10px; }
@@ -523,14 +569,14 @@ h2 {
 
  
 
-/* ?箸??憚?剖?瘛餃?????頛????扯 */
+/* 減少動畫偏好設定 (無障礙) */
 @media (prefers-reduced-motion: no-preference) {
   .carousel-item img {
     image-rendering: auto;
   }
 }
 
-/* ?箸????溶?像皛?皜?*/
+/* 圖片渲染優化 */
 .carousel-inner {
   will-change: transform;
   backface-visibility: hidden;
@@ -558,7 +604,7 @@ h2 {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* 撟單鋆蔭 (768px ??1024px) */
+/* 平板尺寸 (768px ~ 1024px) */
 @media (max-width: 1024px) {
   .carousel-item {
     height: auto !important;
@@ -573,7 +619,7 @@ h2 {
   }
 }
 
-/* ??鋆蔭 (撠 768px) */
+/* 行動裝置 (max-width: 768px) */
 @media (max-width: 768px) {
   .carousel,
   .carousel-inner,
@@ -608,7 +654,7 @@ h2 {
   }
 }
 
-/* 撠??? (撠 576px) */
+/* 小螢幕 (max-width: 576px) */
 @media (max-width: 576px) {
   .carousel-item {
     height:auto;
@@ -631,7 +677,7 @@ h2 {
 }
 
 
-/* 頞???璈?(?渡?撅?) */
+/* 更小螢幕 (窄版手機) */
 @media (max-width: 360px) {
   .carousel-item {
     height: auto;
@@ -651,7 +697,7 @@ h2 {
   }
 }
 
-/* iPhone ?隞隞??璈?(393px ??430px) */
+/* iPhone 尺寸 (393px ~ 430px) */
 @media (max-width: 430px) {
   .carousel,
   .carousel-inner,
@@ -687,14 +733,14 @@ h2 {
     margin-bottom: 0;
   }
 
-  /* 霈憚?剖??芣??撠?*/
+  /* 控制圖示尺寸 */
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     width: 20px;
     height: 20px;
   }
 
-  /* ?芸?撠甈 iPhone 銝?憿舐內 */
+  /* iPhone 導覽品牌調整 */
   .navbar-brand {
     font-size: 1rem;
   }
@@ -704,7 +750,7 @@ h2 {
     height: 40px;
   }
 
-  /* ?芸????∠???iPhone 銝?憿舐內 */
+  /* 服務卡 iPhone 調整 */
   .service-card {
     margin-bottom: 1rem;
   }
@@ -717,7 +763,7 @@ h2 {
     font-size: 2rem;
   }
 
-  /* ?芸??舐窗鞈???iPhone 銝?憿舐內 */
+  /* 聯絡卡 iPhone 調整 */
   .contact-card .card-body {
     padding: 1rem;
   }
@@ -726,10 +772,6 @@ h2 {
     font-size: 0.9rem;
   }
 }
-
-/* 敶梁??憛見撘?*/
-
-
 
 
 .video-container {
@@ -782,10 +824,6 @@ h2 {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-#videoModal .modal-content {
-  background-color: #000;
-  border: none;
-}
 
 #videoModal .modal-header {
   background-color: #1a1a1a;
@@ -798,7 +836,7 @@ h2 {
   filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-/* ?冽?璈?蝮桀?閬擃漲 */
+/* 影片區 RWD */
 @media (max-width: 576px) {
   #video-intro {
     padding-top: 2rem;
@@ -906,7 +944,7 @@ h2 {
   margin: 25px 0;
 }
 
-/* ?踵?撘矽??*/
+/* footer 響應式 */
 @media (max-width: 768px) {
   .footer {
     padding: 30px 0 20px;
@@ -945,7 +983,7 @@ h2 {
   margin: 0 auto;
 }
 
-/* 銵冽?踵?撘身閮?*/
+/* 資料表樣式 */
 .table-responsive {
   margin-top: 1rem;
 }
@@ -964,12 +1002,12 @@ h2 {
 
 
 
-/* 蝣箔?瘥?甇?Ⅱ */
+/* 影片比例 (16:9) */
 .ratio-16x9 {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 瘥? */
+  padding-bottom: 56.25%; /* 16:9 比例 */
 }
 
 .ratio-16x9 iframe {
@@ -981,7 +1019,7 @@ h2 {
   border: none;
 }
 
-/* 閮箇???銵冽見撘?*/
+/* 行程區塊樣式 */
 .schedule-container {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
@@ -1005,7 +1043,7 @@ h2 {
   }
 }
 
-/* ?舐窗??憛見撘?*/
+/* 聯絡卡樣式 */
 .contact-card {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -1100,7 +1138,7 @@ h2 {
   }
 }
 
-/* 瘛餃????嗅?頛???*/
+/* 延遲載入樣式 */
 .lazy-load {
   opacity: 0;
   transition: opacity 0.5s;
@@ -1110,7 +1148,7 @@ h2 {
   opacity: 1;
 }
 
-/* 瘛餃????腹?? */
+/* 按鈕過渡效果 */
 .btn {
   transition: all var(--transition-speed);
 }
@@ -1120,7 +1158,7 @@ h2 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* ?寥脫????璅?*/
+/* 服務圖示樣式 */
 .service-card i {
   transition: transform var(--transition-speed);
   color: var(--primary-color);
@@ -1133,7 +1171,7 @@ h2 {
   transform: scale(1.1);
 }
 
-/* 撟單??璈???芸? */
+/* 響應式調整 */
 @media (max-width: 992px) {
   :root {
     --transition-speed: 0.2s;
@@ -1144,14 +1182,13 @@ h2 {
   }
 }
 
-/* ?慦??亥岷 - 靽?????航???*/
+/* 列印樣式調整 */
 @media print {
   .video-container, .carousel, .navbar-toggler, .btn, .play-icon {
     display: none !important;
   }
   
-
-
+  
   body {
     color: black;
     background: white;
@@ -1180,7 +1217,7 @@ h2 {
   }
 }
 
-/* 瘛餃?瘛∪?? */
+/* 動畫淡入 */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1190,7 +1227,7 @@ h2 {
   animation: fadeIn 0.8s ease forwards;
 }
 
-/* ???? */
+/* 回到頂端按鈕 */
 .to-top-container {
   position: fixed;
   bottom: 30px;
@@ -1245,7 +1282,7 @@ h2 {
   }
 }
 
-/* ?芸?蝢拇??見撘?*/
+/* 按鈕主色 */
 .btn-primary {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
@@ -1271,7 +1308,7 @@ h2 {
   color: white;
 }
 
-/* ?舐鼠銵典璅?? */
+/* 聯絡表單樣式 */
 .contact-form label {
   font-weight: 500;
   color: #555;
@@ -1332,7 +1369,7 @@ h2 {
   }
 }
 
-/* 銵典撽?璅?? */
+/* 表單驗證樣式 */
 .form-control.is-invalid {
   border-color: #dc3545;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -1349,7 +1386,7 @@ h2 {
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 
-/* Banner RWD 蝯曹?閮剖? */
+/* Banner RWD 調整 */
 .carousel,
 .carousel-inner,
 .carousel-item,
@@ -1471,3 +1508,8 @@ body {
     aspect-ratio: 750 / 1038;
   }
 }
+  #home #carouselExampleFade .carousel-item,
+  #home #carouselExampleFade .banner-picture {
+    aspect-ratio: 750 / 1038;
+  }
+
