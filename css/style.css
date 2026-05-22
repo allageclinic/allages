@@ -505,9 +505,13 @@ h2 {
 .carousel-control-next,
 .carousel-control-prev {
   position: absolute !important;
-  top: 50% !important;
+  top: 60% !important;
   transform: translateY(-50%) !important;
   z-index: 10 !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  color: #ff6f7d !important;
 }
 
 .swiper-button-next { right: 0 !important; }
