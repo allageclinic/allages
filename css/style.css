@@ -1,8 +1,8 @@
 ﻿
-   body {
-      font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
-      background-color: #f5f7fb;
-    }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
       font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
       background-color: #f5f7fb;
@@ -518,10 +518,9 @@ h2 {
 .swiper-button-prev { left: 0 !important; }
 
 /* 預設隱藏原生圖示，改用 Google Material Icons 作為箭頭 */
-./* 導覽箭頭：圓形白底、灰色圖示、浮起感、垂直置中 */
+/* 導覽箭頭：圓形白底、灰色圖示、浮起感、垂直置中 */
+
 .swiper-navBtn,
-.swiper-button-next,
-.swiper-button-prev,
 .carousel-control-next,
 .carousel-control-prev {
   width: 48px !important;
