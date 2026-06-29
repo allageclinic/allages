@@ -31,5 +31,18 @@ document.addEventListener("DOMContentLoaded", function() {
   );
 
   document.getElementById("weekRange").innerText = getWeekRange(monday);
-  document.getElementById("clinicSchedule").src = `./images/${weekImg}`;
+  const clinicImg = document.getElementById("clinicSchedule");
+  const weekSrc = `./images/${weekImg}`;
+
+  // 嘗試載入預期檔名，若失敗則嘗試帶底線的檔名，最後回退到通用圖片
+  clinicImg.onerror = function () {
+    if (!this._triedAlt) {
+      this._triedAlt = true;
+      this.src = `./images/week_${weekNum}_.jpg`;
+    } else {
+      this.src = `./images/list.jpg`;
+    }
+  };
+
+  clinicImg.src = weekSrc;
 });
