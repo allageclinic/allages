@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (isTodayFriday && !localStorage.getItem(storageKey)) {
     advanceImage();
     localStorage.setItem(storageKey, todayKey);
-    console.log("Friday image switched to:", images[currentIndex], "Week range:", weekRangeEl.innerText);
+    console.log("Friday image switched to:", images[currentIndex], "Week range:", weekRangeEl.innerText, "Updated at:", new Date().toISOString());
   }
 
   // 排程下一次在下一個週五15:00執行，並建立每週定時器
