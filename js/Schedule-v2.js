@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // 2026-07-10 修复版本 - 周五自动切换
   const today = new Date();
   let monday = new Date(today);
   monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
