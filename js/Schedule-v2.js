@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   const today = new Date();
-  const monday = new Date(today);
+  let monday = new Date(today);
   monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
 
   function getWeekNumberInMonth(date) {
@@ -26,13 +26,18 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentIndex = (weekNum - 1) % images.length;
 
   const imgEl = document.getElementById("clinicSchedule");
-  document.getElementById("weekRange").innerText = getWeekRange(monday);
+  const weekRangeEl = document.getElementById("weekRange");
 
   function setImageByIndex(i) {
     imgEl.src = `./images/${images[i]}`;
   }
 
+  function updateWeekRange() {
+    weekRangeEl.innerText = getWeekRange(monday);
+  }
+
   setImageByIndex(currentIndex);
+  updateWeekRange();
 
   // 每週五 15:00 自動切下一張的排程與狀態儲存
   const storageKey = "lastFridayChangeDate";
@@ -64,16 +69,25 @@ document.addEventListener("DOMContentLoaded", function() {
   function advanceImage() {
     currentIndex = (currentIndex + 1) % images.length;
     setImageByIndex(currentIndex);
+    // 推進到下一週
+    monday.setDate(monday.getDate() + 7);
+    updateWeekRange();
   }
 
   const now = new Date();
-  const thisFriday15 = getThisFriday15(now);
-  const thisFridayKey = formatYMD(thisFriday15);
+  const todayKey = formatYMD(now);
+  const isTodayFriday = now.getDay() === 5; // Friday === 5
 
-  // 如果已過本週五15:00且尚未切換過（以 localStorage 紀錄），則立即切換
-  if (now >= thisFriday15 && localStorage.getItem(storageKey) !== thisFridayKey) {
+  // 強制清除舊記錄，確保周五切換
+  if (isTodayFriday) {
+    localStorage.removeItem(storageKey);
+  }
+
+  // 檢查是否是周五且需要切換
+  if (isTodayFriday && !localStorage.getItem(storageKey)) {
     advanceImage();
-    localStorage.setItem(storageKey, thisFridayKey);
+    localStorage.setItem(storageKey, todayKey);
+    console.log("Friday image switched to:", images[currentIndex], "Week range:", weekRangeEl.innerText);
   }
 
   // 排程下一次在下一個週五15:00執行，並建立每週定時器
