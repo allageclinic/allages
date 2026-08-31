@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // 2026-07-10 修复版本 - 周五自动切换
+  // 2026-08-31 修正版本 - 兼容 week_1.jpg / 1w.jpg 兩種命名，並加入 cache bust
   const today = new Date();
   let monday = new Date(today);
   monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
@@ -19,18 +19,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const weekNum = getWeekNumberInMonth(monday);
 
-  // 預設圖片清單（可依實際圖片數量調整）
-  const totalImages = 5; // 若有更多/更少張，改這個數字
+  const totalImages = 5;
   const images = [];
-  for (let i = 1; i <= totalImages; i++) images.push(`week_${i}.jpg`);
+  for (let i = 1; i <= totalImages; i++) {
+    images.push({
+      main: `week_${i}.jpg`,
+      alt: `${i}w.jpg`
+    });
+  }
 
   let currentIndex = (weekNum - 1) % images.length;
-
   const imgEl = document.getElementById("clinicSchedule");
   const weekRangeEl = document.getElementById("weekRange");
 
+  function buildScheduleUrl(fileName) {
+    return `./images/${fileName}?v=${Date.now()}`;
+  }
+
   function setImageByIndex(i) {
-    imgEl.src = `./images/${images[i]}`;
+    const candidates = [images[i].main, images[i].alt];
+    let attempt = 0;
+
+    function tryNextCandidate() {
+      if (attempt >= candidates.length) {
+        imgEl.src = buildScheduleUrl(candidates[0]);
+        return;
+      }
+
+      const currentName = candidates[attempt];
+      imgEl.src = buildScheduleUrl(currentName);
+      attempt += 1;
+    }
+
+    imgEl.onerror = function() {
+      tryNextCandidate();
+    };
+
+    tryNextCandidate();
   }
 
   function updateWeekRange() {
@@ -40,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
   setImageByIndex(currentIndex);
   updateWeekRange();
 
-  // 每週五 15:00 自動切下一張的排程與狀態儲存
   const storageKey = "lastFridayChangeDate";
 
   function formatYMD(d) {
@@ -55,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function getThisFriday15(now) {
     const d = new Date(now);
-    const daysToFri = (5 - d.getDay() + 7) % 7; // Friday === 5
+    const daysToFri = (5 - d.getDay() + 7) % 7;
     d.setDate(d.getDate() + daysToFri);
     d.setHours(15, 0, 0, 0);
     return d;
@@ -70,28 +94,24 @@ document.addEventListener("DOMContentLoaded", function() {
   function advanceImage() {
     currentIndex = (currentIndex + 1) % images.length;
     setImageByIndex(currentIndex);
-    // 推進到下一週
     monday.setDate(monday.getDate() + 7);
     updateWeekRange();
   }
 
   const now = new Date();
   const todayKey = formatYMD(now);
-  const isTodayFriday = now.getDay() === 5; // Friday === 5
+  const isTodayFriday = now.getDay() === 5;
 
-  // 強制清除舊記錄，確保周五切換
   if (isTodayFriday) {
     localStorage.removeItem(storageKey);
   }
 
-  // 檢查是否是周五且需要切換
   if (isTodayFriday && !localStorage.getItem(storageKey)) {
     advanceImage();
     localStorage.setItem(storageKey, todayKey);
-    console.log("Friday image switched to:", images[currentIndex], "Week range:", weekRangeEl.innerText, "Updated at:", new Date().toISOString());
+    console.log("Friday image switched to:", images[currentIndex].main, "Week range:", weekRangeEl.innerText, "Updated at:", new Date().toISOString());
   }
 
-  // 排程下一次在下一個週五15:00執行，並建立每週定時器
   const nextFriday15 = getNextFriday15(now);
   const msUntilNext = nextFriday15 - now;
   setTimeout(function() {
