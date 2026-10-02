@@ -6,6 +6,8 @@
 body {
       font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
       background-color: #f5f7fb;
+      font-size: 18px;
+      line-height: 1.8;
     }
 
     .section-env {
@@ -22,7 +24,7 @@ body {
     }
     .section-title p {
       color: #999;
-      font-size: 14px;
+      font-size: 16px;
       letter-spacing: 1px;
     }
     .section-title span.line {
@@ -51,7 +53,7 @@ body {
     }
     .env-sidebar-header small {
       display: block;
-      font-size: 13px;
+      font-size: 15px;
       opacity: 0.85;
       margin-top: 6px;
     }
@@ -1511,8 +1513,49 @@ body {
     aspect-ratio: 750 / 1038;
   }
 }
-  #home #carouselExampleFade .carousel-item,
-  #home #carouselExampleFade .banner-picture {
-    aspect-ratio: 750 / 1038;
+
+/* Senior-friendly reading size across inner pages. */
+p,
+li,
+dt,
+dd,
+label,
+.lead,
+.card-text,
+.contact-info p,
+.contact-form .form-check-label {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.small,
+small,
+.text-muted,
+.contact-form .form-text {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.btn,
+.form-control,
+.form-select {
+  font-size: 18px;
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 17px;
   }
 
+  p,
+  li,
+  dt,
+  dd,
+  label,
+  .lead,
+  .card-text,
+  .contact-info p,
+  .contact-form .form-check-label {
+    font-size: 17px;
+  }
+}

@@ -183,19 +183,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- End Google Tag Manager (noscript) -->
    
     <!-- 導航欄 -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
           <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo">
           <h1>樂活全齡綜合診所</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="開啟導覽選單">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">首頁</a>
+              <a class="nav-link active" href="index.html" aria-current="page">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#weekfrom">門診表</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">關於診所</a>
@@ -216,7 +221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <a class="nav-link" href="contact.html">聯絡我們</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='https://line.me/ti/p/pyzvr4VGHa'><img src="./images/line.png" width="30" alt="加LINE"></a>
+              <a class="nav-link nav-line" href="https://line.me/ti/p/pyzvr4VGHa"><img src="./images/line.png" width="26" height="26" alt="">官方 LINE</a>
             </li>
           </ul>
         </div>
