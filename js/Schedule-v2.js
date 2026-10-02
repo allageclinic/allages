@@ -1,130 +1,156 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const totalImages = 5;
-  const images = Array.from({ length: totalImages }, function(_, index) {
-    const week = index + 1;
-    return {
-      main: `week_${week}.jpg`,
-      alt: `${week}w.jpg`
-    };
-  });
-
   const imgEl = document.getElementById("clinicSchedule");
   const weekRangeEl = document.getElementById("weekRange");
-
   if (!imgEl || !weekRangeEl) return;
 
-  function startOfDay(date) {
-    const d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    return d;
-  }
-
-  function getMonday(date) {
-    const monday = startOfDay(date);
-    monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
-    return monday;
-  }
-
-  function getFriday(date) {
-    const friday = getMonday(date);
-    friday.setDate(friday.getDate() + 4);
-    return friday;
-  }
-
-  function shouldShowNextWeek(now) {
-    const day = now.getDay();
-    const cutoff = new Date(now);
-    cutoff.setHours(23, 59, 0, 0);
-
-    return day === 6 || day === 0 || (day === 5 && now >= cutoff);
-  }
-
-  function getDisplayDate(now) {
-    const displayDate = new Date(now);
-
-    if (shouldShowNextWeek(now)) {
-      displayDate.setDate(displayDate.getDate() + ((8 - displayDate.getDay()) % 7));
-    }
-
-    return displayDate;
-  }
-
-  function getWeekNumberInMonth(date) {
-    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    const firstDayIndex = (firstDay.getDay() + 6) % 7;
-    return Math.ceil((date.getDate() + firstDayIndex) / 7);
-  }
-
-  function getScheduleWeekNumber(displayDate) {
-    return getWeekNumberInMonth(displayDate);
-  }
+  const previousButton = document.getElementById("schedulePrevious");
+  const nextButton = document.getElementById("scheduleNext");
+  const todayButton = document.getElementById("scheduleToday");
+  const zoomButton = document.getElementById("scheduleZoom");
+  const downloadLink = document.getElementById("scheduleDownload");
+  const statusEl = document.getElementById("scheduleStatus");
+  let monthKey = "";
+  let availableSchedules = [];
+  let selectedWeek = null;
+  let currentIndex = -1;
 
   function pad(number) {
     return String(number).padStart(2, "0");
+  }
+
+  function getMonthKey(date) {
+    return `${date.getFullYear()}${pad(date.getMonth() + 1)}`;
+  }
+
+  function getMonday(date) {
+    const monday = new Date(date);
+    monday.setHours(0, 0, 0, 0);
+    monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+    return monday;
   }
 
   function formatMD(date) {
     return `${pad(date.getMonth() + 1)}/${pad(date.getDate())}`;
   }
 
-  function getWeekRange(displayDate) {
-    const firstDayOfMonth = startOfDay(new Date(displayDate.getFullYear(), displayDate.getMonth(), 1));
-    const monday = getMonday(displayDate);
-    const friday = getFriday(displayDate);
-    const rangeStart = monday < firstDayOfMonth ? firstDayOfMonth : monday;
-
-    return `${formatMD(rangeStart)}~${formatMD(friday)}`;
+  function getDefaultWeek(now) {
+    const date = new Date(now);
+    const cutoff = new Date(now);
+    cutoff.setHours(23, 59, 0, 0);
+    if (now.getDay() === 6 || now.getDay() === 0 || (now.getDay() === 5 && now >= cutoff)) {
+      date.setDate(date.getDate() + ((8 - date.getDay()) % 7));
+    }
+    if (getMonthKey(date) !== getMonthKey(now)) return 5;
+    const first = new Date(now.getFullYear(), now.getMonth(), 1);
+    return Math.ceil((date.getDate() + (first.getDay() + 6) % 7) / 7);
   }
 
-  function buildScheduleUrl(fileName, displayDate) {
-    const version = [
-      displayDate.getFullYear(),
-      pad(displayDate.getMonth() + 1),
-      pad(displayDate.getDate())
-    ].join("");
-
-    return `./images/${fileName}?v=${version}`;
+  function loadImage(url) {
+    return new Promise(function(resolve) {
+      const image = new Image();
+      image.onload = function() { resolve(url); };
+      image.onerror = function() { resolve(null); };
+      image.src = url;
+    });
   }
 
-  function setImageByIndex(index, displayDate) {
-    const candidates = [images[index].main, images[index].alt];
-    let attempt = 0;
-
-    function tryNextCandidate() {
-      const currentName = candidates[attempt] || candidates[0];
-      attempt += 1;
-      imgEl.src = buildScheduleUrl(currentName, displayDate);
+  function renderSchedule(now) {
+    const defaultWeek = getDefaultWeek(now);
+    currentIndex = availableSchedules.findIndex(function(schedule) {
+      return schedule.week === selectedWeek;
+    });
+    if (currentIndex < 0 && availableSchedules.length) {
+      currentIndex = 0;
+      availableSchedules.forEach(function(schedule, index) {
+        if (schedule.week <= defaultWeek) currentIndex = index;
+      });
     }
 
-    imgEl.onerror = function() {
-      if (attempt < candidates.length) {
-        tryNextCandidate();
-      }
-    };
+    const schedule = availableSchedules[currentIndex];
+    previousButton.disabled = currentIndex <= 0;
+    nextButton.disabled = currentIndex < 0 || currentIndex >= availableSchedules.length - 1;
+    todayButton.disabled = !schedule;
+    zoomButton.disabled = !schedule;
+    downloadLink.hidden = !schedule;
+    imgEl.hidden = !schedule;
+    statusEl.hidden = !!schedule;
+    if (!schedule) {
+      weekRangeEl.textContent = `${now.getFullYear()}/${pad(now.getMonth() + 1)}`;
+      return;
+    }
 
-    tryNextCandidate();
+    weekRangeEl.textContent = `${formatMD(schedule.start)}~${formatMD(schedule.end)}`;
+    imgEl.alt = "門診時間表 " + weekRangeEl.textContent;
+    if (imgEl.getAttribute("src") !== schedule.url) imgEl.src = schedule.url;
+    downloadLink.href = schedule.url;
   }
 
-  function updateSchedule() {
+  async function updateSchedule() {
     const now = new Date();
-    const displayDate = getDisplayDate(now);
-    const weekNum = getScheduleWeekNumber(displayDate);
-    const imageIndex = (weekNum - 1) % images.length;
+    const nextMonthKey = getMonthKey(now);
+    if (nextMonthKey === monthKey) {
+      renderSchedule(now);
+      return;
+    }
 
-    weekRangeEl.innerText = getWeekRange(displayDate);
-    setImageByIndex(imageIndex, displayDate);
-
-    console.log(
-      "schedule display date:",
-      displayDate.toISOString().slice(0, 10),
-      "weekNum:",
-      weekNum,
-      "image:",
-      images[imageIndex].main,
-      "range:",
-      weekRangeEl.innerText
-    );
+    monthKey = nextMonthKey;
+    selectedWeek = null;
+    availableSchedules = [];
+    statusEl.textContent = "門診表載入中";
+    renderSchedule(now);
+    // Expire the uploaded month's JPGs instead of relabeling them next month.
+    if (imgEl.dataset.scheduleMonth !== `${now.getFullYear()}-${pad(now.getMonth() + 1)}`) {
+      statusEl.textContent = "本月門診表尚未提供";
+      return;
+    }
+    const first = new Date(now.getFullYear(), now.getMonth(), 1);
+    const last = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+    const firstMonday = getMonday(first);
+    const candidates = [];
+    for (let week = 1; week <= 5; week += 1) {
+      const monday = new Date(firstMonday);
+      monday.setDate(monday.getDate() + (week - 1) * 7);
+      const friday = new Date(monday);
+      friday.setDate(friday.getDate() + 4);
+      if (friday < first || monday > last) continue;
+      const start = monday < first ? first : monday;
+      const end = friday > last ? last : friday;
+      candidates.push((async function() {
+        // Keep the existing week filenames; only successful loads are selectable.
+        const url = await loadImage(`./images/week_${week}.jpg?v=${nextMonthKey}`);
+        return url ? { week, start, end, url } : null;
+      })());
+    }
+    const schedules = await Promise.all(candidates);
+    if (monthKey !== nextMonthKey) return;
+    // A request finishing after midnight must not restore the previous month.
+    if (getMonthKey(new Date()) !== nextMonthKey) {
+      updateSchedule();
+      return;
+    }
+    availableSchedules = schedules.filter(Boolean);
+    statusEl.textContent = "本月門診表尚未提供";
+    renderSchedule(new Date());
   }
+
+  function changeWeek(offset) {
+    if (getMonthKey(new Date()) !== monthKey) {
+      updateSchedule();
+      return;
+    }
+    renderSchedule(new Date());
+    const schedule = availableSchedules[currentIndex + offset];
+    if (!schedule) return;
+    selectedWeek = schedule.week;
+    renderSchedule(new Date());
+  }
+
+  previousButton.addEventListener("click", function() { changeWeek(-1); });
+  nextButton.addEventListener("click", function() { changeWeek(1); });
+  todayButton.addEventListener("click", function() {
+    selectedWeek = null;
+    updateSchedule();
+  });
 
   updateSchedule();
   setInterval(updateSchedule, 60 * 1000);

@@ -194,8 +194,13 @@
 
 .homepage .schedule-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
 .homepage .schedule-viewer { border: 1px solid var(--home-line); border-radius: 6px; overflow: hidden; }
-.homepage .schedule-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 16px; background: #f4f7f5; }
-.homepage .schedule-toolbar > span { display: flex; align-items: center; gap: 10px; font-variant-numeric: tabular-nums; }
+.homepage .schedule-viewer [hidden] { display: none !important; }
+.homepage .schedule-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: #f4f7f5; }
+.homepage .schedule-week-navigation { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.homepage #weekRange { min-width: 128px; white-space: nowrap; text-align: center; }
+.homepage .schedule-toolbar .icon-button { width: 44px; height: 44px; flex: 0 0 44px; }
+.homepage .schedule-toolbar .icon-button:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+.homepage .schedule-toolbar .icon-button:disabled { opacity: 0.4; cursor: not-allowed; color: var(--home-muted); background: #fff; }
 .homepage .schedule-toolbar .bi-calendar-week { color: var(--primary-color); }
 .homepage .schedule-tools { display: flex; gap: 6px; }
 .homepage #clinicSchedule { display: block; width: 100%; height: auto; margin: 0; }
