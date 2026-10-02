@@ -28,7 +28,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./images/favico.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,6 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/doctor.css">
     <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/homepage.css?v=20261002" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_right" />
    
     
@@ -50,7 +51,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- 基本設定 -->
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://allageclinic.github.io/allages/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="author" content="樂活全齡綜合診所">
@@ -131,7 +131,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 
 
-  <body>
+  <body class="homepage">
+    <a class="skip-link" href="#main-content">跳至主要內容</a>
     <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8B3FW2M"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -146,13 +147,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <img src="./images/logo01.png" alt="樂活全齡綜合診所 Logo">
           <h1>樂活全齡綜合診所</h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="開啟導覽選單">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">首頁</a>
+              <a class="nav-link active" href="index.html" aria-current="page">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#weekfrom">門診表</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">關於診所</a>
@@ -173,16 +177,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <a class="nav-link" href="contact.html">聯絡我們</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href='https://line.me/ti/p/pyzvr4VGHa'><img src="./images/line.png" width="30" alt="加官方LINE"></a>
+              <a class="nav-link nav-line" href="https://line.me/ti/p/pyzvr4VGHa"><img src="./images/line.png" width="26" height="26" alt="">官方 LINE</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <main id="main-content">
     <!-- 首頁橫幅 -->
     <section id="home">
-      <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="carouselExampleFade">
+      <div class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000" id="carouselExampleFade" aria-label="診所最新資訊" aria-roledescription="輪播">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <picture class="banner-picture">
@@ -190,7 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <source media="(max-width: 576px)" srcset="./images/BANNER_576.jpg">       
               <source media="(max-width: 768px)" srcset="./images/BANNER_768.jpg">
               <source media="(max-width: 1024px)" srcset="./images/BANNER_1024.jpg">
-              <img src="./images/BANNER_1920.jpg" class="d-block w-100 banner-img" alt="樂活全齡診所廣告" loading="eager" decoding="async">
+              <img src="./images/BANNER_1920.jpg" class="d-block w-100 banner-img" alt="樂活全齡綜合診所：沈子翔院長，家庭醫學、骨科與復健服務" loading="eager" fetchpriority="high" decoding="async">
             </picture>
             </div>
            <div class="carousel-item">
@@ -199,29 +204,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <source media="(max-width: 576px)" srcset="./images/0917banner_576.jpg">       
               <source media="(max-width: 768px)" srcset="./images/0917banner_768.jpg">
               <source media="(max-width: 1024px)" srcset="./images/0917banner_1024.jpg">
-              <img src="./images/0917banner_1920.jpg" class="d-block w-100 banner-img" alt="樂活全齡診所廣告" loading="eager" decoding="async">
+              <img src="./images/0917banner_1920.jpg" class="d-block w-100 banner-img" alt="關節疼痛諮詢：PRP 與玻尿酸，電話 06-2791515" loading="eager" decoding="async">
             </picture>
            </div>
   
           </div>
-        </div>
+        <div class="banner-controls">
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <i class="bi bi-chevron-left" aria-hidden="true"></i>
           <span class="visually-hidden">上一張</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
           <span class="visually-hidden">下一張</span>
         </button>
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="診所介紹"></button>
+          <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="關節疼痛諮詢"></button>
+        </div>
+        <button class="carousel-pause icon-button" type="button" aria-label="暫停輪播" title="暫停輪播" aria-pressed="false"><i class="bi bi-pause-fill" aria-hidden="true"></i></button>
+        </div>
       </div>
     </section>
 
+    <nav class="quick-access" aria-label="就診快捷連結">
+      <div class="container quick-access-grid">
+        <a href="#weekfrom"><i class="bi bi-calendar-week" aria-hidden="true"></i><span>門診時間表<small>醫師看診時段</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a href="tel:062791515"><i class="bi bi-telephone" aria-hidden="true"></i><span>電話諮詢<small>06-2791515</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a href="https://line.me/ti/p/pyzvr4VGHa"><img src="./images/line.png" width="28" height="28" alt=""><span>官方 LINE<small>聯絡診所</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        <a href="#traffic"><i class="bi bi-geo-alt" aria-hidden="true"></i><span>交通位置<small>仁德區・備有停車空間</small></span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </nav>
 
+    <section id="weekfrom" class="home-section schedule-section">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="section-label">看診資訊</p><h2>門診時間表</h2></div>
+          <a class="text-link" href="https://www.facebook.com/profile.php?id=61560249694438"><i class="bi bi-facebook" aria-hidden="true"></i> 最新公告 <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="schedule-layout">
+          <div class="schedule-viewer">
+            <div class="schedule-toolbar">
+              <span><i class="bi bi-calendar-week" aria-hidden="true"></i> <span id="weekRange" class="fw-bold"></span></span>
+              <div class="schedule-tools">
+                <button id="scheduleZoom" class="icon-button" type="button" title="放大門診表" aria-label="放大門診表"><i class="bi bi-arrows-fullscreen" aria-hidden="true"></i></button>
+                <a id="scheduleDownload" class="icon-button" href="./images/week_1.jpg" download title="下載門診表" aria-label="下載門診表"><i class="bi bi-download" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <img id="clinicSchedule" src="./images/week_1.jpg?v=20261002" alt="門診時間表" class="week" width="1080" height="1080" loading="lazy">
+          </div>
+          <aside class="visit-info" aria-label="就診資訊">
+            <h3>看診時段</h3>
+            <dl class="visit-hours">
+              <div><dt>上午</dt><dd>09:00 – 12:00</dd></div>
+              <div><dt>下午</dt><dd>14:30 – 17:30</dd></div>
+              <div><dt>晚上</dt><dd>18:00 – 20:30</dd></div>
+            </dl>
+            <p class="schedule-note"><i class="bi bi-info-circle" aria-hidden="true"></i> 週三下午為 14:00 – 17:00，各科看診日請依門診表。</p>
+            <p class="schedule-note">醫師排班若有異動，以 <a href="https://www.facebook.com/profile.php?id=61560249694438">FB 最新公告</a>為主。</p>
+            <div class="visit-contact">
+              <h3>就診諮詢</h3>
+              <a class="clinic-phone" href="tel:062791515">06-2791515 <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="home-button" href="https://line.me/ti/p/pyzvr4VGHa"><i class="bi bi-chat-dots" aria-hidden="true"></i> 聯絡官方 LINE</a>
+              <a class="text-link" href="#traffic"><i class="bi bi-geo-alt" aria-hidden="true"></i> 臺南市仁德區中正路二段1225號</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
 
      <!-- 服務項目 -->
-    <section id="services" class="py-5 bg-light">
-      <div class="container item ">
-        <h2 class="text-center mb-5 fade-in">診療項目</h2>
+    <section id="services" class="home-section bg-light">
+      <div class="container">
+        <div class="section-heading"><div><p class="section-label">全齡健康照護</p><h2>診療項目</h2></div></div>
                                                                                                                                                                                                                                                                                                                                                                                       
         <div class="row">
           <div class="col-md-3 mb-4">
@@ -264,14 +319,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </section>
 
+<section id="preventive-care" class="home-section">
+<div class="container">
+  <div class="section-heading"><div><p class="section-label">健康與保健</p><h2>預防醫學</h2></div><a class="text-link" href="health-Edu.html">衛教宣導 <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
 <div class="slide-container swiper">
   <div class="slide-content">
-    <h2 class="text-center mb-5 fade-in">預防醫學</h2>
     <div class="card-wrapper swiper-wrapper">
        <div class="card swiper-slide">
         <div class="image-content">
           <div class="card-image">
-            <img src="./images/herpes-zoster-vaccine.jpg" alt="療程名稱" loading="lazy">
+            <img src="./images/herpes-zoster-vaccine.jpg" alt="帶狀疱疹疫苗資訊" loading="lazy">
           </div>
         </div>  
       </div>
@@ -279,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card swiper-slide">
         <div class="image-content">
           <div class="card-image">
-            <img src="./images/prp.jpg" alt="療程名稱" loading="lazy">
+            <img src="./images/prp.jpg" alt="PRP 療程資訊" loading="lazy">
           </div>
         </div>  
       </div>
@@ -287,7 +344,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card swiper-slide">
         <div class="image-content">
           <div class="card-image">
-            <img src="./images/hpv-vaccine.jpg" alt="療程名稱" loading="lazy">
+            <img src="./images/hpv-vaccine.jpg" alt="HPV 疫苗資訊" loading="lazy">
           </div>
         </div>  
       </div>
@@ -295,7 +352,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card swiper-slide">
         <div class="image-content">
           <div class="card-image">
-            <img src="./images/u-relax.jpg" alt="療程名稱" loading="lazy">
+            <img src="./images/u-relax.jpg" alt="U-relax 療程資訊" loading="lazy">
           </div>
         </div>  
       </div>
@@ -303,45 +360,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="card swiper-slide">
         <div class="image-content">
           <div class="card-image">
-            <img src="./images/muti.jpg" alt="療程名稱" loading="lazy">
+            <img src="./images/muti.jpg" alt="診所保健服務資訊" loading="lazy">
           </div>
         </div>  
       </div>
     </div>
   </div>
 
-  <div class="swiper-button-next swiper-navBtn"></div>
-  <div class="swiper-button-prev swiper-navBtn"></div>
+  <button class="swiper-button-next swiper-navBtn" type="button" title="下一項" aria-label="下一項"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+  <button class="swiper-button-prev swiper-navBtn" type="button" title="上一項" aria-label="上一項"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
   <div class="swiper-pagination"></div>
 </div>
-
-
-
-    <!-- 門診時間表 -->
-    <section id="weekfrom">
-      <div class="container item allageweek">
-        <h2 class="text-center mb-3 fade-in">本週門診表</h2>
-        <p class="txttxt mb-3" >〈週三時間為14:00-17:00〉</p> 
-        <p class="txttxt mb-3" >※醫師排班若有異動，以 FB 最新公告為主。</p>                                                           
-        <div class="card service-card  fade-in" style="animation-delay: 0.1s;">
-          <div class="mb-2 text-center">
-          <span id="weekRange" class="fw-bold"></span>
-        </div>
-        <img id="clinicSchedule" src="./images/week_1.jpg?v=20260831" alt="門診時間表" class="week" loading="lazy">
-        <p id="weekInfo"></p>
-        </div>
-      </div>
-    </section>
+</div>
+</section>
     
     <!-- 影片介紹 -->
 
-<section id="allage-intro" class="py-5 bg-light">
+<section id="allage-intro" class="home-section bg-light">
   <div class="container">
     <div class="row mb-5 justify-content-center" style="padding: 15px 0;">
       <!-- 左側：文字內容 -->
       <div class="col-lg-6 col-md-10 col-12 mb-4 mb-lg-0 d-flex align-items-center justify-content-center">
         <div class="d-inline-block text-start">
-          <h2 class="text-center">樂活全齡 關心全民</h2>
+          <p class="section-label">認識樂活全齡</p>
+          <h2>樂活全齡 關心全民</h2>
           <h3 class="hh3">專業醫療服務，照顧您全家健康</h3>
           <p class="lead mb-4">樂活全齡綜合診所辦理社區衛教講座</p>
           <ul class="list-unstyl mb-4">
@@ -369,6 +411,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             width="569"
             height="315"
             src="https://youtube.com/embed/gCY4RzKZpcE"
+            title="樂活全齡綜合診所社區衛教講座"
+            loading="lazy"
             frameborder="0"
             allowfullscreen>
           </iframe>
@@ -379,10 +423,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 
 
-     <section id="doctor" class="py-5">
-      <div class="container doctor">
-        <h2 class="text-center mb-5 fade-in">醫師團隊</h2>                                                                                                                                            
-        <div class="row">
+     <section id="doctor" class="home-section">
+      <div class="container">
+        <div class="section-heading"><div><p class="section-label">專業醫療團隊</p><h2>醫師團隊</h2></div><a class="text-link" href="#weekfrom">查看門診表 <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="row doctor-grid">
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
             <div class="card doctor-card h-100 fade-in" style="animation-delay: 0.1s;">
               <div class="card-body">
@@ -439,11 +483,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-</div>
     <!-- 聯絡我們 -->
-    <section id="contact" class="py-5 bg-light">
+    <section id="contact" class="home-section bg-light">
       <div class="container">
-        <h2 class="text-center mb-5 fade-in">聯絡我們</h2>
+        <div class="section-heading"><div><p class="section-label">到診所看診</p><h2>聯絡與交通</h2></div></div>
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="contact-card">
@@ -453,7 +496,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <div class="card-body">
                 <div class="contact-info mb-3">
                   <p><i class="bi bi-geo-alt-fill text-gray me-2"></i> 地址：<strong>臺南市仁德區中正路二段1225號</strong></p>
-                  <p><i class="bi bi-telephone-fill text-gray me-2"></i> 電話：<strong>06-2791515</strong></p>
+                  <p><i class="bi bi-telephone-fill text-gray me-2"></i> 電話：<a href="tel:062791515"><strong>06-2791515</strong></a></p>
                   <p><i class="bi bi-clock-fill text-gray me-2"></i> 營業時間：</p>
                 </div>
                 <div class="schedule-container mt-3 mb-4">
@@ -489,19 +532,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   </div>
                 </div>
                 <div class="schedule-container">
-                  <img src="images/map.jpg" alt="診所位置" class="img-fluid rounded schedule-image" loading="lazy">
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=臺南市仁德區中正路二段1225號" target="_blank" rel="noopener" aria-label="在 Google 地圖查看診所位置"><img src="images/map.jpg" alt="診所位置" class="img-fluid rounded schedule-image" loading="lazy"></a>
                 </div>
+                <a class="text-link map-link" href="https://www.google.com/maps/search/?api=1&amp;query=臺南市仁德區中正路二段1225號" target="_blank" rel="noopener"><i class="bi bi-geo-alt" aria-hidden="true"></i> 開啟 Google 地圖 <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
         </div>
         <div class="row mt-4">
           <div class="col-12 text-center">
-            <button class="btn btn-success btn-lg mb-5" alt="加LINE" onclick="window.location.href='https://line.me/ti/p/pyzvr4VGHa'">加官方LINE</button>
+            <a class="home-button" href="https://line.me/ti/p/pyzvr4VGHa"><i class="bi bi-chat-dots" aria-hidden="true"></i> 加官方 LINE</a>
           </div>
         </div>
       </div>
     </section>
+    </main>
+
+    <dialog id="scheduleDialog" class="schedule-dialog" aria-labelledby="scheduleDialogTitle">
+      <div class="dialog-toolbar"><h2 id="scheduleDialogTitle">門診時間表</h2><button id="scheduleClose" class="icon-button" type="button" aria-label="關閉門診表" title="關閉"><i class="bi bi-x-lg" aria-hidden="true"></i></button></div>
+      <div class="schedule-dialog-content"><img id="scheduleLarge" alt="放大的門診時間表"></div>
+    </dialog>
 
     <!-- 頁尾 -->
     <footer class="footer py-4">
@@ -550,6 +600,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h5 class="text-white mb-3 mt-3">粉絲專頁</h5>
             <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61560249694438" data-tabs="timeline" data-width="" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/profile.php?id=61560249694438" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/profile.php?id=61560249694438">樂活全齡綜合診所</a></blockquote></div>
             </div>       
+        </div>
         
         <hr class="footer-divider my-4">
         
@@ -567,7 +618,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
      <!-- 回到頂部按鈕 -->
     <div class="to-top-container">
-      <a href="#" class="to-top-button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+      <a href="#home" class="to-top-button" aria-label="回到頂端" title="回到頂端"><i class="bi bi-arrow-up" aria-hidden="true"></i></a>
     </div>
 
 
@@ -577,12 +628,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
  <!-- JS -->
-  <script src="./js/Schedule-v2.js?v=20260710"></script>
-  <script src="./js/traffic.js"></script>
+  <script src="./js/Schedule-v2.js?v=20261002"></script>
   <script src="./js/main.js"></script>
-  <script src="./js/script.js"></script>
   <script src="./js/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/homepage.js?v=20261002"></script>
   
 
   <!-- Facebook SDK -->

@@ -1,8 +1,53 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // 2026-08-31 修正版本 - 兼容 week_1.jpg / 1w.jpg 兩種命名，並加入 cache bust
-  const today = new Date();
-  let monday = new Date(today);
-  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+  const totalImages = 5;
+  const images = Array.from({ length: totalImages }, function(_, index) {
+    const week = index + 1;
+    return {
+      main: `week_${week}.jpg`,
+      alt: `${week}w.jpg`
+    };
+  });
+
+  const imgEl = document.getElementById("clinicSchedule");
+  const weekRangeEl = document.getElementById("weekRange");
+
+  if (!imgEl || !weekRangeEl) return;
+
+  function startOfDay(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
+  function getMonday(date) {
+    const monday = startOfDay(date);
+    monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+    return monday;
+  }
+
+  function getFriday(date) {
+    const friday = getMonday(date);
+    friday.setDate(friday.getDate() + 4);
+    return friday;
+  }
+
+  function shouldShowNextWeek(now) {
+    const day = now.getDay();
+    const cutoff = new Date(now);
+    cutoff.setHours(23, 59, 0, 0);
+
+    return day === 6 || day === 0 || (day === 5 && now >= cutoff);
+  }
+
+  function getDisplayDate(now) {
+    const displayDate = new Date(now);
+
+    if (shouldShowNextWeek(now)) {
+      displayDate.setDate(displayDate.getDate() + ((8 - displayDate.getDay()) % 7));
+    }
+
+    return displayDate;
+  }
 
   function getWeekNumberInMonth(date) {
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -10,119 +55,77 @@ document.addEventListener("DOMContentLoaded", function() {
     return Math.ceil((date.getDate() + firstDayIndex) / 7);
   }
 
-  function getWeekRange(startDate) {
-    const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 4);
-    const pad = (n) => String(n).padStart(2, "0");
-    return `${pad(startDate.getMonth() + 1)}/${pad(startDate.getDate())}~${pad(endDate.getMonth() + 1)}/${pad(endDate.getDate())}`;
+  function getScheduleWeekNumber(displayDate) {
+    return getWeekNumberInMonth(displayDate);
   }
 
-  const weekNum = getWeekNumberInMonth(monday);
-
-  const totalImages = 5;
-  const images = [];
-  for (let i = 1; i <= totalImages; i++) {
-    images.push({
-      main: `week_${i}.jpg`,
-      alt: `${i}w.jpg`
-    });
+  function pad(number) {
+    return String(number).padStart(2, "0");
   }
 
-  let currentIndex = (weekNum - 1) % images.length;
-  const imgEl = document.getElementById("clinicSchedule");
-  const weekRangeEl = document.getElementById("weekRange");
-
-  function buildScheduleUrl(fileName) {
-    return `./images/${fileName}?v=${Date.now()}`;
+  function formatMD(date) {
+    return `${pad(date.getMonth() + 1)}/${pad(date.getDate())}`;
   }
 
-  function setImageByIndex(i) {
-    const candidates = [images[i].main, images[i].alt];
+  function getWeekRange(displayDate) {
+    const firstDayOfMonth = startOfDay(new Date(displayDate.getFullYear(), displayDate.getMonth(), 1));
+    const monday = getMonday(displayDate);
+    const friday = getFriday(displayDate);
+    const rangeStart = monday < firstDayOfMonth ? firstDayOfMonth : monday;
+
+    return `${formatMD(rangeStart)}~${formatMD(friday)}`;
+  }
+
+  function buildScheduleUrl(fileName, displayDate) {
+    const version = [
+      displayDate.getFullYear(),
+      pad(displayDate.getMonth() + 1),
+      pad(displayDate.getDate())
+    ].join("");
+
+    return `./images/${fileName}?v=${version}`;
+  }
+
+  function setImageByIndex(index, displayDate) {
+    const candidates = [images[index].main, images[index].alt];
     let attempt = 0;
 
     function tryNextCandidate() {
-      if (attempt >= candidates.length) {
-        imgEl.src = buildScheduleUrl(candidates[0]);
-        return;
-      }
-
-      const currentName = candidates[attempt];
-      imgEl.src = buildScheduleUrl(currentName);
+      const currentName = candidates[attempt] || candidates[0];
       attempt += 1;
+      imgEl.src = buildScheduleUrl(currentName, displayDate);
     }
 
     imgEl.onerror = function() {
-      tryNextCandidate();
+      if (attempt < candidates.length) {
+        tryNextCandidate();
+      }
     };
 
     tryNextCandidate();
   }
 
-  function updateWeekRange() {
-    weekRangeEl.innerText = getWeekRange(monday);
-  }
+  function updateSchedule() {
+    const now = new Date();
+    const displayDate = getDisplayDate(now);
+    const weekNum = getScheduleWeekNumber(displayDate);
+    const imageIndex = (weekNum - 1) % images.length;
 
-  setImageByIndex(currentIndex);
-  updateWeekRange();
+    weekRangeEl.innerText = getWeekRange(displayDate);
+    setImageByIndex(imageIndex, displayDate);
 
-  const storageKey = "lastFridayChangeDate";
-
-  function formatYMD(d) {
-    return (
-      d.getFullYear() +
-      "-" +
-      String(d.getMonth() + 1).padStart(2, "0") +
-      "-" +
-      String(d.getDate()).padStart(2, "0")
+    console.log(
+      "schedule display date:",
+      displayDate.toISOString().slice(0, 10),
+      "weekNum:",
+      weekNum,
+      "image:",
+      images[imageIndex].main,
+      "range:",
+      weekRangeEl.innerText
     );
   }
 
-  function getThisFriday15(now) {
-    const d = new Date(now);
-    const daysToFri = (5 - d.getDay() + 7) % 7;
-    d.setDate(d.getDate() + daysToFri);
-    d.setHours(15, 0, 0, 0);
-    return d;
-  }
-
-  function getNextFriday15(now) {
-    const candidate = getThisFriday15(now);
-    if (candidate <= now) candidate.setDate(candidate.getDate() + 7);
-    return candidate;
-  }
-
-  function advanceImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    setImageByIndex(currentIndex);
-    monday.setDate(monday.getDate() + 7);
-    updateWeekRange();
-  }
-
-  const now = new Date();
-  const todayKey = formatYMD(now);
-  const isTodayFriday = now.getDay() === 5;
-
-  if (isTodayFriday) {
-    localStorage.removeItem(storageKey);
-  }
-
-  if (isTodayFriday && !localStorage.getItem(storageKey)) {
-    advanceImage();
-    localStorage.setItem(storageKey, todayKey);
-    console.log("Friday image switched to:", images[currentIndex].main, "Week range:", weekRangeEl.innerText, "Updated at:", new Date().toISOString());
-  }
-
-  const nextFriday15 = getNextFriday15(now);
-  const msUntilNext = nextFriday15 - now;
-  setTimeout(function() {
-    advanceImage();
-    localStorage.setItem(storageKey, formatYMD(nextFriday15));
-    setInterval(function() {
-      const todayKey = formatYMD(new Date());
-      advanceImage();
-      localStorage.setItem(storageKey, todayKey);
-    }, 7 * 24 * 60 * 60 * 1000);
-  }, msUntilNext);
-
-  console.log("today:", today.toISOString().slice(0, 10), "monday:", monday.toISOString().slice(0, 10), "weekNum:", weekNum, "currentIndex:", currentIndex);
+  updateSchedule();
+  setInterval(updateSchedule, 60 * 1000);
 });
